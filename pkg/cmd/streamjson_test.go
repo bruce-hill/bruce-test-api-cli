@@ -5,7 +5,7 @@ package cmd
 import (
 	"testing"
 
-	"github.com/DefinitelyATestOrg/test-api-cli/internal/mocktest"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/mocktest"
 )
 
 func TestStreamJsonStream(t *testing.T) {

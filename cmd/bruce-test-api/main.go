@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/DefinitelyATestOrg/test-api-cli/pkg/cmd"
-	"github.com/DefinitelyATestOrg/test-api-go"
+	"github.com/bruce-hill/bruce-test-api-cli/pkg/cmd"
+	"github.com/bruce-hill/bruce-test-api-go"
 	"github.com/tidwall/gjson"
 )
 

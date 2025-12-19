@@ -12,8 +12,8 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/DefinitelyATestOrg/test-api-cli/internal/jsonview"
-	"github.com/DefinitelyATestOrg/test-api-go/option"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/jsonview"
+	"github.com/bruce-hill/bruce-test-api-go/option"
 
 	"github.com/itchyny/json2yaml"
 	"github.com/tidwall/gjson"
