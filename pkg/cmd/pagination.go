@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/DefinitelyATestOrg/test-api-cli/internal/apiquery"
-	"github.com/DefinitelyATestOrg/test-api-cli/internal/requestflag"
-	"github.com/DefinitelyATestOrg/test-api-go"
-	"github.com/DefinitelyATestOrg/test-api-go/option"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
+	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/option"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )

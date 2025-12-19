@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 <!-- x-release-please-start-version -->
 
 ```sh
-go install 'github.com/DefinitelyATestOrg/test-api-cli/cmd/bruce-test-api@latest'
+go install 'github.com/bruce-hill/bruce-test-api-cli/cmd/bruce-test-api@latest'
 ```
 
 ### Running Locally
