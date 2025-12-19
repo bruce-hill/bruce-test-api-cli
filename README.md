@@ -6,6 +6,13 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
+### Installing with Homebrew
+
+```sh
+brew tap bruce-hill/tools
+brew install bruce-test-api
+```
+
 ### Installing with Go
 
 <!-- x-release-please-start-version -->
@@ -34,7 +41,7 @@ bruce-test-api [resource] [command] [flags]
 
 ```sh
 bruce-test-api update-count \
-  --body 0
+  --body 1
 ```
 
 For details about specific commands, use the `--help` flag.

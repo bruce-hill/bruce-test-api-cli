@@ -78,3 +78,19 @@ nfpms:
     contents:
       - src: man/man1/*.1.gz
         dst: /usr/share/man/man1/
+homebrew_casks:
+  - name: bruce-test-api
+    repository:
+      owner: bruce-hill
+      name: homebrew-tools
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    homepage: https://bruce-hill.com
+    description: The best test CLI.
+    license: Apache-2.0
+    binary: "bruce-test-api"
+    completions:
+      bash: "completions/bruce-test-api.bash"
+      zsh: "completions/bruce-test-api.zsh"
+      fish: "completions/bruce-test-api.fish"
+    manpages:
+    - man/man1/bruce-test-api.1.gz
