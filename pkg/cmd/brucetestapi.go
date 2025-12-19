@@ -5,63 +5,240 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
-	"github.com/bruce-hill/bruce-test-api-cli/pkg/jsonflag"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	"github.com/bruce-hill/bruce-test-api-go"
-	"github.com/bruce-hill/bruce-test-api-go/option"
 	"github.com/urfave/cli/v3"
 )
 
-var clientGetFoo = cli.Command{
-	Name:            "get_foo",
-	Usage:           "Get a Foo that has text, a random number, and a list of random numbers.",
-	Flags:           []cli.Flag{},
-	Action:          handleClientGetFoo,
-	HideHelpCommand: true,
-}
-
-var clientSetText = cli.Command{
-	Name:  "set_text",
-	Usage: "Set the text that is returned when getting a Foo.",
+var formTest = cli.Command{
+	Name:  "form-test",
+	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
-		&jsonflag.JSONStringFlag{
-			Name: "name",
-			Config: jsonflag.JSONConfig{
-				Kind: jsonflag.Query,
-				Path: "name",
-			},
+		&requestflag.Flag[int64]{
+			Name: "version",
+		},
+		&requestflag.Flag[string]{
+			Name: "user-id",
+		},
+		&requestflag.Flag[requestflag.DateValue]{
+			Name:      "date",
+			QueryPath: "date",
+		},
+		&requestflag.Flag[requestflag.DateTimeValue]{
+			Name:      "datetime",
+			QueryPath: "datetime",
+		},
+		&requestflag.Flag[requestflag.TimeValue]{
+			Name:      "time",
+			QueryPath: "time",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:      "filter",
+			QueryPath: "filter",
+		},
+		&requestflag.Flag[any]{
+			Name:      "id-or-index",
+			QueryPath: "idOrIndex",
+		},
+		&requestflag.Flag[int64]{
+			Name:      "limit",
+			QueryPath: "limit",
+		},
+		&requestflag.Flag[[]string]{
+			Name:      "tag",
+			QueryPath: "tags",
+		},
+		&requestflag.Flag[string]{
+			Name:     "blorp",
+			BodyPath: "blorp",
+		},
+		&requestflag.Flag[any]{
+			Name:     "pls-null",
+			BodyPath: "pls_null",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "preferences",
+			BodyPath: "preferences",
+		},
+		&requestflag.Flag[[]string]{
+			Name:       "x-flag",
+			HeaderPath: "X-Flags",
+		},
+		&requestflag.Flag[string]{
+			Name:       "x-trace-id",
+			HeaderPath: "X-Trace-ID",
 		},
 	},
-	Action:          handleClientSetText,
+	Action:          handleFormTest,
 	HideHelpCommand: true,
 }
 
-func handleClientGetFoo(ctx context.Context, cmd *cli.Command) error {
-	cc := getAPICommandContext(cmd)
-	res, err := cc.client.GetFoo(context.TODO(), option.WithMiddleware(cc.AsMiddleware()))
-	if err != nil {
-		return err
-	}
-
-	fmt.Printf("%s\n", ColorizeJSON(res.RawJSON(), os.Stdout))
-	return nil
+var jsonTest = cli.Command{
+	Name:  "json-test",
+	Usage: "Mixed parameter types",
+	Flags: []cli.Flag{
+		&requestflag.Flag[int64]{
+			Name: "version",
+		},
+		&requestflag.Flag[string]{
+			Name: "user-id",
+		},
+		&requestflag.Flag[requestflag.DateValue]{
+			Name:      "date",
+			QueryPath: "date",
+		},
+		&requestflag.Flag[requestflag.DateTimeValue]{
+			Name:      "datetime",
+			QueryPath: "datetime",
+		},
+		&requestflag.Flag[requestflag.TimeValue]{
+			Name:      "time",
+			QueryPath: "time",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:      "filter",
+			QueryPath: "filter",
+		},
+		&requestflag.Flag[any]{
+			Name:      "id-or-index",
+			QueryPath: "idOrIndex",
+		},
+		&requestflag.Flag[int64]{
+			Name:      "limit",
+			QueryPath: "limit",
+		},
+		&requestflag.Flag[[]string]{
+			Name:      "tag",
+			QueryPath: "tags",
+		},
+		&requestflag.Flag[string]{
+			Name:     "blorp",
+			BodyPath: "blorp",
+		},
+		&requestflag.Flag[any]{
+			Name:     "pls-null",
+			BodyPath: "pls_null",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "preferences",
+			BodyPath: "preferences",
+		},
+		&requestflag.Flag[[]string]{
+			Name:       "x-flag",
+			HeaderPath: "X-Flags",
+		},
+		&requestflag.Flag[string]{
+			Name:       "x-trace-id",
+			HeaderPath: "X-Trace-ID",
+		},
+	},
+	Action:          handleJsonTest,
+	HideHelpCommand: true,
 }
 
-func handleClientSetText(ctx context.Context, cmd *cli.Command) error {
-	cc := getAPICommandContext(cmd)
-	params := brucetestapi.SetTextParams{}
-	res := []byte{}
-	_, err := cc.client.SetText(
-		context.TODO(),
-		params,
-		option.WithMiddleware(cc.AsMiddleware()),
-		option.WithResponseBodyInto(&res),
+var updateCount = cli.Command{
+	Name:  "update-count",
+	Usage: "Perform update-count operation",
+	Flags: []cli.Flag{
+		&requestflag.Flag[int64]{
+			Name:     "body",
+			BodyRoot: true,
+		},
+	},
+	Action:          handleUpdateCount,
+	HideHelpCommand: true,
+}
+
+func handleFormTest(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+	if !cmd.IsSet("user-id") && len(unusedArgs) > 0 {
+		cmd.Set("user-id", unusedArgs[0])
+		unusedArgs = unusedArgs[1:]
+	}
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := brucetestapi.FormTestParams{
+		Version: cmd.Value("version").(int64),
+	}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatComma,
+		MultipartFormEncoded,
+		false,
 	)
 	if err != nil {
 		return err
 	}
 
-	fmt.Printf("%s\n", ColorizeJSON(string(res), os.Stdout))
-	return nil
+	return client.FormTest(
+		ctx,
+		cmd.Value("user-id").(string),
+		params,
+		options...,
+	)
+}
+
+func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+	if !cmd.IsSet("user-id") && len(unusedArgs) > 0 {
+		cmd.Set("user-id", unusedArgs[0])
+		unusedArgs = unusedArgs[1:]
+	}
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := brucetestapi.JsonTestParams{
+		Version: cmd.Value("version").(int64),
+	}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatComma,
+		ApplicationJSON,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	return client.JsonTest(
+		ctx,
+		cmd.Value("user-id").(string),
+		params,
+		options...,
+	)
+}
+
+func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := brucetestapi.UpdateCountParams{}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatComma,
+		ApplicationJSON,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	return client.UpdateCount(ctx, params, options...)
 }
