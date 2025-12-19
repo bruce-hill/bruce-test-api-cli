@@ -41,7 +41,7 @@ bruce-test-api [resource] [command] [flags]
 
 ```sh
 bruce-test-api update-count \
-  --body 1
+  --body 123
 ```
 
 For details about specific commands, use the `--help` flag.
