@@ -34,7 +34,7 @@ var formTest = cli.Command{
 			Name:      "time",
 			QueryPath: "time",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
 			QueryPath: "filter",
 		},
@@ -58,7 +58,7 @@ var formTest = cli.Command{
 			Name:     "pls-null",
 			BodyPath: "pls_null",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
 			BodyPath: "preferences",
 		},
@@ -97,7 +97,7 @@ var jsonTest = cli.Command{
 			Name:      "time",
 			QueryPath: "time",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
 			QueryPath: "filter",
 		},
@@ -121,7 +121,7 @@ var jsonTest = cli.Command{
 			Name:     "pls-null",
 			BodyPath: "pls_null",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
 			BodyPath: "preferences",
 		},
