@@ -5,10 +5,13 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
 
@@ -177,12 +180,22 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	return client.FormTest(
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.FormTest(
 		ctx,
 		cmd.Value("user-id").(string),
 		params,
 		options...,
 	)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "form-test", obj, format, transform)
 }
 
 func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
@@ -211,12 +224,22 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	return client.JsonTest(
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.JsonTest(
 		ctx,
 		cmd.Value("user-id").(string),
 		params,
 		options...,
 	)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
 }
 
 func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
