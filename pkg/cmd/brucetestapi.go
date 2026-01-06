@@ -180,7 +180,7 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		MultipartFormEncoded,
 		false,
 	)
@@ -224,7 +224,7 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		ApplicationJSON,
 		false,
 	)
@@ -263,7 +263,7 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		ApplicationJSON,
 		false,
 	)

@@ -33,7 +33,7 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		EmptyBody,
 		false,
 	)
