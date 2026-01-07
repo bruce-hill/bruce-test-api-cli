@@ -74,6 +74,10 @@ var formTest = cli.Command{
 			Name:     "preferences",
 			BodyPath: "preferences",
 		},
+		&requestflag.Flag[any]{
+			Name:     "something",
+			BodyPath: "something",
+		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
 			HeaderPath: "X-Flags",
@@ -145,6 +149,10 @@ var jsonTest = cli.Command{
 		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
 			BodyPath: "preferences",
+		},
+		&requestflag.Flag[any]{
+			Name:     "something",
+			BodyPath: "something",
 		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
