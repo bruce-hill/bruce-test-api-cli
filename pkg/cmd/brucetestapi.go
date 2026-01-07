@@ -62,6 +62,10 @@ var formTest = cli.Command{
 			Name:     "blorp",
 			BodyPath: "blorp",
 		},
+		&requestflag.Flag[[]any]{
+			Name:     "many-something",
+			BodyPath: "many_somethings",
+		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "pet",
 			BodyPath: "pets",
@@ -137,6 +141,10 @@ var jsonTest = cli.Command{
 		&requestflag.Flag[string]{
 			Name:     "blorp",
 			BodyPath: "blorp",
+		},
+		&requestflag.Flag[[]any]{
+			Name:     "many-something",
+			BodyPath: "many_somethings",
 		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "pet",
