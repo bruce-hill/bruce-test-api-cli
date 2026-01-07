@@ -20,21 +20,26 @@ var formTest = cli.Command{
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name: "version",
+			Name:     "version",
+			Required: true,
 		},
 		&requestflag.Flag[string]{
-			Name: "user-id",
+			Name:     "user-id",
+			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -87,21 +92,26 @@ var jsonTest = cli.Command{
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name: "version",
+			Name:     "version",
+			Required: true,
 		},
 		&requestflag.Flag[string]{
-			Name: "user-id",
+			Name:     "user-id",
+			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -155,6 +165,7 @@ var updateCount = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "body",
+			Required: true,
 			BodyRoot: true,
 		},
 	},
