@@ -74,15 +74,6 @@ func handlePaginationList(ctx context.Context, cmd *cli.Command) error {
 		return ShowJSON(os.Stdout, "pagination list", obj, format, transform)
 	} else {
 		iter := client.Pagination.ListAutoPaging(ctx, params, options...)
-		return streamOutput("pagination list", func(w *os.File) error {
-			for iter.Next() {
-				item := iter.Current()
-				obj := gjson.Parse(item.RawJSON())
-				if err := ShowJSON(w, "pagination list", obj, format, transform); err != nil {
-					return err
-				}
-			}
-			return iter.Err()
-		})
+		return ShowJSONIterator(os.Stdout, "pagination list", iter, format, transform)
 	}
 }

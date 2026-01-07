@@ -4,13 +4,11 @@ package cmd
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-go"
-	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
 
@@ -44,14 +42,5 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
 	stream := client.StreamJson.StreamStreaming(ctx, options...)
-	for stream.Next() {
-		response := stream.Current()
-		jsonData, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		obj := gjson.ParseBytes(jsonData)
-		ShowJSON(os.Stdout, "stream-json stream", obj, format, transform)
-	}
-	return stream.Err()
+	return ShowJSONIterator(os.Stdout, "stream-json stream", stream, format, transform)
 }
