@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.0 (2026-01-08)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* added support for --foo.baz inner field flags ([8b2f21c](https://github.com/bruce-hill/bruce-test-api-cli/commit/8b2f21c6fe91dae105592e73781b4b741c3e666d))
+* **api:** manual updates ([885a598](https://github.com/bruce-hill/bruce-test-api-cli/commit/885a598d00ad051089a0d8cf0bd9e127789402dd))
+* **api:** manual updates ([6f126e3](https://github.com/bruce-hill/bruce-test-api-cli/commit/6f126e306f532b0343368ffa33240db8b9cd8023))
+* **api:** manual updates ([2b8ffe3](https://github.com/bruce-hill/bruce-test-api-cli/commit/2b8ffe3e3727cf9b7926dbe6ecf61cebab1e079c))
+* **api:** manual updates ([e1b1ef2](https://github.com/bruce-hill/bruce-test-api-cli/commit/e1b1ef234119696e45b19e7a4f048333cd1abaa6))
+* **api:** manual updates ([f6aa297](https://github.com/bruce-hill/bruce-test-api-cli/commit/f6aa297742298dbe74dec8bd3a30e12167455b47))
+* **api:** manual updates ([369ed2c](https://github.com/bruce-hill/bruce-test-api-cli/commit/369ed2c2b44e0c2e4f7023ba388b2822081310ed))
+* **api:** manual updates ([56d42d8](https://github.com/bruce-hill/bruce-test-api-cli/commit/56d42d8b5295ed12d39950a408fafe8a444ff648))
+* **api:** manual updates ([313b153](https://github.com/bruce-hill/bruce-test-api-cli/commit/313b1532b8dad26a2c6d672c24bc478d42aeea86))
+* **api:** manual updates ([095aebf](https://github.com/bruce-hill/bruce-test-api-cli/commit/095aebf061bd27ddca9e2e23af63ea0cf7e92218))
+* **api:** manual updates ([2b1e5a1](https://github.com/bruce-hill/bruce-test-api-cli/commit/2b1e5a1a72554a76669b3cf84875242e5de013da))
+* **api:** manual updates ([3722c55](https://github.com/bruce-hill/bruce-test-api-cli/commit/3722c5595f19f6102eca74d82337642be5a8ec8a))
+* improved behavior for exploring paginated/streamed endpoints ([a6d3983](https://github.com/bruce-hill/bruce-test-api-cli/commit/a6d39834faf6a200d02650f1ab2496e3b655feeb))
+
+
+### Bug Fixes
+
+* check required arguments ([d67dacc](https://github.com/bruce-hill/bruce-test-api-cli/commit/d67dacc8dedcab06876f3b1a961e02b434795d8f))
+* fixed placeholders for date/time arguments ([d2b47fa](https://github.com/bruce-hill/bruce-test-api-cli/commit/d2b47fac04174195a01f4500c8c9cdc17258ee33))
+
 ## 0.3.0 (2025-12-19)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.2.0...v0.3.0)

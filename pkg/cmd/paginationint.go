@@ -4,7 +4,6 @@ package cmd
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 
@@ -48,7 +47,7 @@ func handlePaginationIntsList(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		EmptyBody,
 		false,
 	)
@@ -69,19 +68,6 @@ func handlePaginationIntsList(ctx context.Context, cmd *cli.Command) error {
 		return ShowJSON(os.Stdout, "pagination:ints list", obj, format, transform)
 	} else {
 		iter := client.Pagination.Ints.ListAutoPaging(ctx, params, options...)
-		return streamOutput("pagination:ints list", func(w *os.File) error {
-			for iter.Next() {
-				item := iter.Current()
-				jsonObj, err := json.Marshal(item)
-				if err != nil {
-					return err
-				}
-				obj := gjson.ParseBytes(jsonObj)
-				if err := ShowJSON(w, "pagination:ints list", obj, format, transform); err != nil {
-					return err
-				}
-			}
-			return iter.Err()
-		})
+		return ShowJSONIterator(os.Stdout, "pagination:ints list", iter, format, transform)
 	}
 }

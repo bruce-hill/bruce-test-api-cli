@@ -5,33 +5,41 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
 
-var formTest = cli.Command{
+var formTest = requestflag.WithInnerFlags(cli.Command{
 	Name:  "form-test",
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name: "version",
+			Name:     "version",
+			Required: true,
 		},
 		&requestflag.Flag[string]{
-			Name: "user-id",
+			Name:     "user-id",
+			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -54,6 +62,14 @@ var formTest = cli.Command{
 			Name:     "blorp",
 			BodyPath: "blorp",
 		},
+		&requestflag.Flag[[]any]{
+			Name:     "many-something",
+			BodyPath: "many_somethings",
+		},
+		&requestflag.Flag[[]map[string]any]{
+			Name:     "pet",
+			BodyPath: "pets",
+		},
 		&requestflag.Flag[any]{
 			Name:     "pls-null",
 			BodyPath: "pls_null",
@@ -61,6 +77,10 @@ var formTest = cli.Command{
 		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
 			BodyPath: "preferences",
+		},
+		&requestflag.Flag[any]{
+			Name:     "something",
+			BodyPath: "something",
 		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
@@ -73,28 +93,64 @@ var formTest = cli.Command{
 	},
 	Action:          handleFormTest,
 	HideHelpCommand: true,
-}
+}, map[string][]requestflag.HasOuterFlag{
+	"filter": {
+		&requestflag.InnerFlag[map[string]any]{
+			Name:       "filter.meta",
+			InnerField: "meta",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "filter.status",
+			InnerField: "status",
+		},
+	},
+	"pet": {
+		&requestflag.InnerFlag[string]{
+			Name:       "pet.name",
+			InnerField: "name",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "pet.age",
+			InnerField: "age",
+		},
+	},
+	"preferences": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "preferences.alerts",
+			InnerField: "alerts",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "preferences.theme",
+			InnerField: "theme",
+		},
+	},
+})
 
-var jsonTest = cli.Command{
+var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	Name:  "json-test",
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name: "version",
+			Name:     "version",
+			Required: true,
 		},
 		&requestflag.Flag[string]{
-			Name: "user-id",
+			Name:     "user-id",
+			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[map[string]any]{
@@ -117,6 +173,14 @@ var jsonTest = cli.Command{
 			Name:     "blorp",
 			BodyPath: "blorp",
 		},
+		&requestflag.Flag[[]any]{
+			Name:     "many-something",
+			BodyPath: "many_somethings",
+		},
+		&requestflag.Flag[[]map[string]any]{
+			Name:     "pet",
+			BodyPath: "pets",
+		},
 		&requestflag.Flag[any]{
 			Name:     "pls-null",
 			BodyPath: "pls_null",
@@ -124,6 +188,10 @@ var jsonTest = cli.Command{
 		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
 			BodyPath: "preferences",
+		},
+		&requestflag.Flag[any]{
+			Name:     "something",
+			BodyPath: "something",
 		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
@@ -136,7 +204,38 @@ var jsonTest = cli.Command{
 	},
 	Action:          handleJsonTest,
 	HideHelpCommand: true,
-}
+}, map[string][]requestflag.HasOuterFlag{
+	"filter": {
+		&requestflag.InnerFlag[map[string]any]{
+			Name:       "filter.meta",
+			InnerField: "meta",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "filter.status",
+			InnerField: "status",
+		},
+	},
+	"pet": {
+		&requestflag.InnerFlag[string]{
+			Name:       "pet.name",
+			InnerField: "name",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "pet.age",
+			InnerField: "age",
+		},
+	},
+	"preferences": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "preferences.alerts",
+			InnerField: "alerts",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "preferences.theme",
+			InnerField: "theme",
+		},
+	},
+})
 
 var updateCount = cli.Command{
 	Name:  "update-count",
@@ -144,6 +243,7 @@ var updateCount = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "body",
+			Required: true,
 			BodyRoot: true,
 		},
 	},
@@ -169,7 +269,7 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		MultipartFormEncoded,
 		false,
 	)
@@ -177,12 +277,22 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	return client.FormTest(
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.FormTest(
 		ctx,
 		cmd.Value("user-id").(string),
 		params,
 		options...,
 	)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "form-test", obj, format, transform)
 }
 
 func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
@@ -203,7 +313,7 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		ApplicationJSON,
 		false,
 	)
@@ -211,12 +321,22 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	return client.JsonTest(
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.JsonTest(
 		ctx,
 		cmd.Value("user-id").(string),
 		params,
 		options...,
 	)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
 }
 
 func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
@@ -232,7 +352,7 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatComma,
+		apiquery.ArrayQueryFormatRepeat,
 		ApplicationJSON,
 		false,
 	)
