@@ -10,7 +10,7 @@ import (
 )
 
 func TestFormTest(t *testing.T) {
-	t.Skip("prism issues")
+	t.Skip("prism issues because it's bad")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"form-test",
