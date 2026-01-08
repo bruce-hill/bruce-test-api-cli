@@ -15,7 +15,7 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var formTest = cli.Command{
+var formTest = requestflag.WithInnerFlags(cli.Command{
 	Name:  "form-test",
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
@@ -93,9 +93,40 @@ var formTest = cli.Command{
 	},
 	Action:          handleFormTest,
 	HideHelpCommand: true,
-}
+}, map[string][]requestflag.HasOuterFlag{
+	"filter": {
+		&requestflag.InnerFlag[map[string]any]{
+			Name:       "filter.meta",
+			InnerField: "meta",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "filter.status",
+			InnerField: "status",
+		},
+	},
+	"pet": {
+		&requestflag.InnerFlag[string]{
+			Name:       "pet.name",
+			InnerField: "name",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "pet.age",
+			InnerField: "age",
+		},
+	},
+	"preferences": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "preferences.alerts",
+			InnerField: "alerts",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "preferences.theme",
+			InnerField: "theme",
+		},
+	},
+})
 
-var jsonTest = cli.Command{
+var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	Name:  "json-test",
 	Usage: "Mixed parameter types",
 	Flags: []cli.Flag{
@@ -173,7 +204,38 @@ var jsonTest = cli.Command{
 	},
 	Action:          handleJsonTest,
 	HideHelpCommand: true,
-}
+}, map[string][]requestflag.HasOuterFlag{
+	"filter": {
+		&requestflag.InnerFlag[map[string]any]{
+			Name:       "filter.meta",
+			InnerField: "meta",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "filter.status",
+			InnerField: "status",
+		},
+	},
+	"pet": {
+		&requestflag.InnerFlag[string]{
+			Name:       "pet.name",
+			InnerField: "name",
+		},
+		&requestflag.InnerFlag[int64]{
+			Name:       "pet.age",
+			InnerField: "age",
+		},
+	},
+	"preferences": {
+		&requestflag.InnerFlag[bool]{
+			Name:       "preferences.alerts",
+			InnerField: "alerts",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "preferences.theme",
+			InnerField: "theme",
+		},
+	},
+})
 
 var updateCount = cli.Command{
 	Name:  "update-count",
