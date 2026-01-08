@@ -237,20 +237,6 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	},
 })
 
-var updateCount = cli.Command{
-	Name:  "update-count",
-	Usage: "Perform update-count operation",
-	Flags: []cli.Flag{
-		&requestflag.Flag[int64]{
-			Name:     "body",
-			Required: true,
-			BodyRoot: true,
-		},
-	},
-	Action:          handleUpdateCount,
-	HideHelpCommand: true,
-}
-
 func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -337,28 +323,4 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
 	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
-}
-
-func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
-	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	params := brucetestapi.UpdateCountParams{}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatDots,
-		apiquery.ArrayQueryFormatRepeat,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	return client.UpdateCount(ctx, params, options...)
 }
