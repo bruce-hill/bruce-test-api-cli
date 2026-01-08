@@ -139,11 +139,3 @@ func TestJsonTest(t *testing.T) {
 		"--x-trace-id", "trace-abc-123",
 	)
 }
-
-func TestUpdateCount(t *testing.T) {
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"update-count",
-		"--body", "42",
-	)
-}
