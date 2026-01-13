@@ -14,7 +14,7 @@ import (
 
 var streamJsonStream = cli.Command{
 	Name:            "stream",
-	Usage:           "Streams JSON objects as a chunked response (NDJSON)",
+	Usage:           "Streams JSON objects as a chunked response using Newline Delimited JSON (NDJSON)\nformat. Each line contains a complete JSON object. Useful for real-time data\nfeeds or large dataset streaming.",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleStreamJsonStream,

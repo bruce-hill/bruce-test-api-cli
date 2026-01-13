@@ -17,16 +17,18 @@ import (
 
 var paginationIntsList = cli.Command{
 	Name:    "list",
-	Usage:   "Get paginated integers",
+	Usage:   "Retrieves a paginated list of integer values. Useful for demonstrating\npagination with primitive types.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "page",
+			Usage:     "Page number to retrieve (1-indexed)",
 			Default:   1,
 			QueryPath: "page",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "size",
+			Usage:     "Number of items per page",
 			Default:   50,
 			QueryPath: "size",
 		},
