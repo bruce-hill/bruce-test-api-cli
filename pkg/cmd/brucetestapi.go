@@ -17,79 +17,96 @@ import (
 
 var formTest = requestflag.WithInnerFlags(cli.Command{
 	Name:    "form-test",
-	Usage:   "Mixed parameter types",
+	Usage:   "Demonstrates a form-data endpoint with various parameter types including path,\nquery, and header parameters. Accepts multipart form data for user updates.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "version",
+			Usage:    "The API version to use",
 			Required: true,
 		},
 		&requestflag.Flag[string]{
 			Name:     "user-id",
+			Usage:    "User ID in the format usr_xxxxx",
 			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Usage:     "Date filter in ISO 8601 format (YYYY-MM-DD)",
 			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Usage:     "Full datetime filter in ISO 8601 format",
 			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Usage:     "Time filter in ISO 8601 format (HH:MM:SS)",
 			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[string]{
 			Name:     "blorp",
+			Usage:    "Required field for demonstration purposes",
 			Required: true,
 			BodyPath: "blorp",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
+			Usage:     "Complex filter object for advanced querying",
 			QueryPath: "filter",
 		},
 		&requestflag.Flag[any]{
 			Name:      "id-or-index",
+			Usage:     "Flexible identifier that can be either a numeric index or string ID",
 			QueryPath: "idOrIndex",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
+			Usage:     "Maximum number of results to return",
 			QueryPath: "limit",
 		},
 		&requestflag.Flag[[]string]{
 			Name:      "tag",
+			Usage:     "Filter results by one or more tags",
 			QueryPath: "tags",
 		},
 		&requestflag.Flag[[]any]{
 			Name:     "many-something",
+			Usage:    "Array of Something items",
 			BodyPath: "many_somethings",
 		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "pet",
+			Usage:    "List of user's pets",
 			BodyPath: "pets",
 		},
 		&requestflag.Flag[any]{
 			Name:     "pls-null",
+			Usage:    "A null value field for testing null handling",
 			BodyPath: "pls_null",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
+			Usage:    "User preference settings",
 			BodyPath: "preferences",
 		},
 		&requestflag.Flag[any]{
 			Name:     "something",
+			Usage:    "A flexible type that can be either a number or an object with name and optional count properties",
 			BodyPath: "something",
 		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
+			Usage:      "Array of feature flag names",
 			HeaderPath: "X-Flags",
 		},
 		&requestflag.Flag[string]{
 			Name:       "x-trace-id",
+			Usage:      "Trace ID string for distributed tracing",
 			HeaderPath: "X-Trace-ID",
 		},
 	},
@@ -99,30 +116,36 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 	"filter": {
 		&requestflag.InnerFlag[map[string]any]{
 			Name:       "filter.meta",
+			Usage:      "Metadata filter options",
 			InnerField: "meta",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "filter.status",
+			Usage:      "Filter by status value",
 			InnerField: "status",
 		},
 	},
 	"pet": {
 		&requestflag.InnerFlag[string]{
 			Name:       "pet.name",
+			Usage:      "Name of the pet",
 			InnerField: "name",
 		},
 		&requestflag.InnerFlag[int64]{
 			Name:       "pet.age",
+			Usage:      "Age of the pet in years",
 			InnerField: "age",
 		},
 	},
 	"preferences": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "preferences.alerts",
+			Usage:      "Whether to enable alert notifications",
 			InnerField: "alerts",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "preferences.theme",
+			Usage:      "UI theme preference (e.g., dark, light)",
 			InnerField: "theme",
 		},
 	},
@@ -130,79 +153,96 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 
 var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	Name:    "json-test",
-	Usage:   "Mixed parameter types",
+	Usage:   "Demonstrates a JSON endpoint with various parameter types including path, query,\nand header parameters. Accepts JSON body for user updates.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "version",
+			Usage:    "The API version to use",
 			Required: true,
 		},
 		&requestflag.Flag[string]{
 			Name:     "user-id",
+			Usage:    "User ID in the format usr_xxxxx",
 			Required: true,
 		},
 		&requestflag.Flag[requestflag.DateValue]{
 			Name:      "date",
+			Usage:     "Date filter in ISO 8601 format (YYYY-MM-DD)",
 			Required:  true,
 			QueryPath: "date",
 		},
 		&requestflag.Flag[requestflag.DateTimeValue]{
 			Name:      "datetime",
+			Usage:     "Full datetime filter in ISO 8601 format",
 			Required:  true,
 			QueryPath: "datetime",
 		},
 		&requestflag.Flag[requestflag.TimeValue]{
 			Name:      "time",
+			Usage:     "Time filter in ISO 8601 format (HH:MM:SS)",
 			Required:  true,
 			QueryPath: "time",
 		},
 		&requestflag.Flag[string]{
 			Name:     "blorp",
+			Usage:    "Required field for demonstration purposes",
 			Required: true,
 			BodyPath: "blorp",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
+			Usage:     "Complex filter object for advanced querying",
 			QueryPath: "filter",
 		},
 		&requestflag.Flag[any]{
 			Name:      "id-or-index",
+			Usage:     "Flexible identifier that can be either a numeric index or string ID",
 			QueryPath: "idOrIndex",
 		},
 		&requestflag.Flag[int64]{
 			Name:      "limit",
+			Usage:     "Maximum number of results to return",
 			QueryPath: "limit",
 		},
 		&requestflag.Flag[[]string]{
 			Name:      "tag",
+			Usage:     "Filter results by one or more tags",
 			QueryPath: "tags",
 		},
 		&requestflag.Flag[[]any]{
 			Name:     "many-something",
+			Usage:    "Array of Something items",
 			BodyPath: "many_somethings",
 		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "pet",
+			Usage:    "List of user's pets",
 			BodyPath: "pets",
 		},
 		&requestflag.Flag[any]{
 			Name:     "pls-null",
+			Usage:    "A null value field for testing null handling",
 			BodyPath: "pls_null",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "preferences",
+			Usage:    "User preference settings",
 			BodyPath: "preferences",
 		},
 		&requestflag.Flag[any]{
 			Name:     "something",
+			Usage:    "A flexible type that can be either a number or an object with name and optional count properties",
 			BodyPath: "something",
 		},
 		&requestflag.Flag[[]string]{
 			Name:       "x-flag",
+			Usage:      "Array of feature flag names",
 			HeaderPath: "X-Flags",
 		},
 		&requestflag.Flag[string]{
 			Name:       "x-trace-id",
+			Usage:      "Trace ID string for distributed tracing",
 			HeaderPath: "X-Trace-ID",
 		},
 	},
@@ -212,30 +252,36 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	"filter": {
 		&requestflag.InnerFlag[map[string]any]{
 			Name:       "filter.meta",
+			Usage:      "Metadata filter options",
 			InnerField: "meta",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "filter.status",
+			Usage:      "Filter by status value",
 			InnerField: "status",
 		},
 	},
 	"pet": {
 		&requestflag.InnerFlag[string]{
 			Name:       "pet.name",
+			Usage:      "Name of the pet",
 			InnerField: "name",
 		},
 		&requestflag.InnerFlag[int64]{
 			Name:       "pet.age",
+			Usage:      "Age of the pet in years",
 			InnerField: "age",
 		},
 	},
 	"preferences": {
 		&requestflag.InnerFlag[bool]{
 			Name:       "preferences.alerts",
+			Usage:      "Whether to enable alert notifications",
 			InnerField: "alerts",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "preferences.theme",
+			Usage:      "UI theme preference (e.g., dark, light)",
 			InnerField: "theme",
 		},
 	},
