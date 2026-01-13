@@ -16,8 +16,9 @@ import (
 )
 
 var paginationList = cli.Command{
-	Name:  "list",
-	Usage: "Get foos",
+	Name:    "list",
+	Usage:   "Get foos",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "page",

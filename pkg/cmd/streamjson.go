@@ -15,6 +15,7 @@ import (
 var streamJsonStream = cli.Command{
 	Name:            "stream",
 	Usage:           "Streams JSON objects as a chunked response (NDJSON)",
+	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleStreamJsonStream,
 	HideHelpCommand: true,
