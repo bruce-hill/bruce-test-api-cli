@@ -46,4 +46,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/bruce-hill/bruce-test-api-go => github.com/stainless-sdks/bruce-test-api-go v0.0.0-20260113185838-a4c4f2660786
+replace github.com/bruce-hill/bruce-test-api-go => github.com/stainless-sdks/bruce-test-api-go v0.0.0-20260113191822-cdbd1d8f303f
