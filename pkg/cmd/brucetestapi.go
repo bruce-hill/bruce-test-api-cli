@@ -16,8 +16,9 @@ import (
 )
 
 var formTest = requestflag.WithInnerFlags(cli.Command{
-	Name:  "form-test",
-	Usage: "Mixed parameter types",
+	Name:    "form-test",
+	Usage:   "Mixed parameter types",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "version",
@@ -127,8 +128,9 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 })
 
 var jsonTest = requestflag.WithInnerFlags(cli.Command{
-	Name:  "json-test",
-	Usage: "Mixed parameter types",
+	Name:    "json-test",
+	Usage:   "Mixed parameter types",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:     "version",

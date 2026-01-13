@@ -16,8 +16,9 @@ import (
 )
 
 var paginationIntsList = cli.Command{
-	Name:  "list",
-	Usage: "Get paginated integers",
+	Name:    "list",
+	Usage:   "Get paginated integers",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "page",
