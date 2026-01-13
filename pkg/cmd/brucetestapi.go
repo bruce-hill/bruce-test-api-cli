@@ -287,6 +287,22 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	},
 })
 
+var uploadTest = cli.Command{
+	Name:    "upload-test",
+	Usage:   "Accepts a binary file upload using multipart/form-data. Typical use cases\ninclude uploading images, documents, or other opaque binaries.",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:     "file",
+			Usage:    "The binary file to upload.",
+			Required: true,
+			BodyPath: "file",
+		},
+	},
+	Action:          handleUploadTest,
+	HideHelpCommand: true,
+}
+
 func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -373,4 +389,38 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
 	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
+}
+
+func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := brucetestapi.UploadTestParams{}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatRepeat,
+		MultipartFormEncoded,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.UploadTest(ctx, params, options...)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "upload-test", obj, format, transform)
 }

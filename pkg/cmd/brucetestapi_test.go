@@ -139,3 +139,11 @@ func TestJsonTest(t *testing.T) {
 		"--x-trace-id", "trace-abc-123",
 	)
 }
+
+func TestUploadTest(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"upload-test",
+		"--file", "",
+	)
+}
