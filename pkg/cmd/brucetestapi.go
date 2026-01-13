@@ -43,6 +43,11 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 			Required:  true,
 			QueryPath: "time",
 		},
+		&requestflag.Flag[string]{
+			Name:     "blorp",
+			Required: true,
+			BodyPath: "blorp",
+		},
 		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
 			QueryPath: "filter",
@@ -58,10 +63,6 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 		&requestflag.Flag[[]string]{
 			Name:      "tag",
 			QueryPath: "tags",
-		},
-		&requestflag.Flag[string]{
-			Name:     "blorp",
-			BodyPath: "blorp",
 		},
 		&requestflag.Flag[[]any]{
 			Name:     "many-something",
@@ -155,6 +156,11 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 			Required:  true,
 			QueryPath: "time",
 		},
+		&requestflag.Flag[string]{
+			Name:     "blorp",
+			Required: true,
+			BodyPath: "blorp",
+		},
 		&requestflag.Flag[map[string]any]{
 			Name:      "filter",
 			QueryPath: "filter",
@@ -170,10 +176,6 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 		&requestflag.Flag[[]string]{
 			Name:      "tag",
 			QueryPath: "tags",
-		},
-		&requestflag.Flag[string]{
-			Name:     "blorp",
-			BodyPath: "blorp",
 		},
 		&requestflag.Flag[[]any]{
 			Name:     "many-something",
