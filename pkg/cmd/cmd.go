@@ -69,6 +69,7 @@ func init() {
 		Commands: []*cli.Command{
 			&formTest,
 			&jsonTest,
+			&uploadTest,
 			{
 				Name:     "pagination",
 				Category: "API RESOURCE",
