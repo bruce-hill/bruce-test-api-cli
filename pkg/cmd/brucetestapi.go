@@ -30,19 +30,19 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 			Usage:    "User ID in the format usr_xxxxx",
 			Required: true,
 		},
-		&requestflag.Flag[requestflag.DateValue]{
+		&requestflag.Flag[any]{
 			Name:      "date",
 			Usage:     "Date filter in ISO 8601 format (YYYY-MM-DD)",
 			Required:  true,
 			QueryPath: "date",
 		},
-		&requestflag.Flag[requestflag.DateTimeValue]{
+		&requestflag.Flag[any]{
 			Name:      "datetime",
 			Usage:     "Full datetime filter in ISO 8601 format",
 			Required:  true,
 			QueryPath: "datetime",
 		},
-		&requestflag.Flag[requestflag.TimeValue]{
+		&requestflag.Flag[any]{
 			Name:      "time",
 			Usage:     "Time filter in ISO 8601 format (HH:MM:SS)",
 			Required:  true,
@@ -166,19 +166,19 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 			Usage:    "User ID in the format usr_xxxxx",
 			Required: true,
 		},
-		&requestflag.Flag[requestflag.DateValue]{
+		&requestflag.Flag[any]{
 			Name:      "date",
 			Usage:     "Date filter in ISO 8601 format (YYYY-MM-DD)",
 			Required:  true,
 			QueryPath: "date",
 		},
-		&requestflag.Flag[requestflag.DateTimeValue]{
+		&requestflag.Flag[any]{
 			Name:      "datetime",
 			Usage:     "Full datetime filter in ISO 8601 format",
 			Required:  true,
 			QueryPath: "datetime",
 		},
-		&requestflag.Flag[requestflag.TimeValue]{
+		&requestflag.Flag[any]{
 			Name:      "time",
 			Usage:     "Time filter in ISO 8601 format (HH:MM:SS)",
 			Required:  true,
