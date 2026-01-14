@@ -3,7 +3,7 @@ module github.com/bruce-hill/bruce-test-api-cli
 go 1.25
 
 require (
-	github.com/bruce-hill/bruce-test-api-go v0.0.0
+	github.com/bruce-hill/bruce-test-api-go v0.26.0
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.6
 	github.com/charmbracelet/lipgloss v1.1.0
@@ -44,5 +44,3 @@ require (
 	golang.org/x/text v0.3.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/bruce-hill/bruce-test-api-go => github.com/stainless-sdks/bruce-test-api-go v0.0.0-20260113215815-18e77e401687
