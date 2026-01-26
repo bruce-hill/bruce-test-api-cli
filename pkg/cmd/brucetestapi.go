@@ -287,6 +287,22 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	},
 })
 
+var updateCount = cli.Command{
+	Name:    "update-count",
+	Usage:   "Updates the current count with a new integer value. The value must be a positive\ninteger (minimum 1).",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[int64]{
+			Name:     "body",
+			Usage:    "A positive integer representing the new count value",
+			Required: true,
+			BodyRoot: true,
+		},
+	},
+	Action:          handleUpdateCount,
+	HideHelpCommand: true,
+}
+
 var uploadTest = cli.Command{
 	Name:    "upload-test",
 	Usage:   "Accepts a binary file upload using multipart/form-data. Typical use cases\ninclude uploading images, documents, or other opaque binaries.",
@@ -389,6 +405,40 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
 	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
+}
+
+func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	params := brucetestapi.UpdateCountParams{}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatRepeat,
+		ApplicationJSON,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.UpdateCount(ctx, params, options...)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(os.Stdout, "update-count", obj, format, transform)
 }
 
 func handleUploadTest(ctx context.Context, cmd *cli.Command) error {

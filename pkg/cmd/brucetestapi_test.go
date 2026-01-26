@@ -140,6 +140,14 @@ func TestJsonTest(t *testing.T) {
 	)
 }
 
+func TestUpdateCount(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"update-count",
+		"--body", "42",
+	)
+}
+
 func TestUploadTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
