@@ -70,9 +70,11 @@ func init() {
 			&formTest,
 			&jsonTest,
 			&updateCount,
+			&uploadTest,
 			{
 				Name:     "pagination",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&paginationList,
 				},
@@ -80,6 +82,7 @@ func init() {
 			{
 				Name:     "pagination:ints",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&paginationIntsList,
 				},
@@ -87,6 +90,7 @@ func init() {
 			{
 				Name:     "stream-json",
 				Category: "API RESOURCE",
+				Suggest:  true,
 				Commands: []*cli.Command{
 					&streamJsonStream,
 				},

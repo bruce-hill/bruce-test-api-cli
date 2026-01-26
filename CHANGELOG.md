@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.5.0 (2026-01-26)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([4d69cd3](https://github.com/bruce-hill/bruce-test-api-cli/commit/4d69cd32a598def7cee0e9556af9a307ae3c61b4))
+* **api:** manual updates ([1d88bf6](https://github.com/bruce-hill/bruce-test-api-cli/commit/1d88bf6e2d04986af3370e75583bd819e00baee1))
+* **api:** manual updates ([b654002](https://github.com/bruce-hill/bruce-test-api-cli/commit/b654002c16ba521e9b70e08b72df6454b0bb9e37))
+* **api:** manual updates ([b1c54a4](https://github.com/bruce-hill/bruce-test-api-cli/commit/b1c54a4a6012bb6a769d8eee6ea7dfebba4aa961))
+* **api:** manual updates ([dbdea19](https://github.com/bruce-hill/bruce-test-api-cli/commit/dbdea1992778b970f56bbaed99c0be22cf239a7a))
+* **api:** manual updates ([be8cf16](https://github.com/bruce-hill/bruce-test-api-cli/commit/be8cf16bce1b79209a182a17083e063fe6d2bb7f))
+* **api:** manual updates ([044b0da](https://github.com/bruce-hill/bruce-test-api-cli/commit/044b0da41d6bb8fbe5e46501947e0cf830c4f327))
+* **api:** manual updates ([4d1f70c](https://github.com/bruce-hill/bruce-test-api-cli/commit/4d1f70c022f12e65e4b72145b20bd512d78fa12e))
+* enable CI tests ([26c6a26](https://github.com/bruce-hill/bruce-test-api-cli/commit/26c6a26f16626d8348c1155a4ee1b3df58a059e6))
+* enable suggestion for mistyped commands and flags ([10d15c5](https://github.com/bruce-hill/bruce-test-api-cli/commit/10d15c540e8b01cdb3962c0bb7a76edcf157b580))
+
+
+### Bug Fixes
+
+* avoid consuming request bodies when printing redacted outputs ([8558ef2](https://github.com/bruce-hill/bruce-test-api-cli/commit/8558ef25d11e65578715b0df0d934f18eaf1718e))
+* **client:** do not use pager for short paginated responses ([7ccb35f](https://github.com/bruce-hill/bruce-test-api-cli/commit/7ccb35fa6566963a938da9d45c4c73b39a484f0a))
+* fix for paginated output not writing to pager correctly ([070dbe5](https://github.com/bruce-hill/bruce-test-api-cli/commit/070dbe5a74249915de1b7a46ab0d4ad83d813ab9))
+* fix terminal height issues causing test failures ([4c190c0](https://github.com/bruce-hill/bruce-test-api-cli/commit/4c190c0b978ff1c034638c8339faeff60963ba07))
+* flag types ([65138d3](https://github.com/bruce-hill/bruce-test-api-cli/commit/65138d3083e98f157c42b54e45572882f7a64b55))
+* overly broad redaction of Authorization ([8bbc480](https://github.com/bruce-hill/bruce-test-api-cli/commit/8bbc48051beff39fd97b309f12b535c268e73176))
+* prevent flag duplication ([ba4c660](https://github.com/bruce-hill/bruce-test-api-cli/commit/ba4c6606ade298708912f211d2a951f858d2e862))
+* remove unsupported methods ([cf5d69d](https://github.com/bruce-hill/bruce-test-api-cli/commit/cf5d69d5810147d3dbeffd943a9b80b4414d86fc))
+
+
+### Chores
+
+* **internal:** codegen related update ([bcb9b15](https://github.com/bruce-hill/bruce-test-api-cli/commit/bcb9b15ae0c1a094cfbed5d6d02cb7342ef3df0d))
+* **internal:** codegen related update ([d4bf2bc](https://github.com/bruce-hill/bruce-test-api-cli/commit/d4bf2bcb4db6901226108742646f676f25a5546a))
+* **internal:** codegen related update ([a5b89d8](https://github.com/bruce-hill/bruce-test-api-cli/commit/a5b89d80ef54a32fb64d8dd55cba156e54850f68))
+* **internal:** codegen related update ([711e405](https://github.com/bruce-hill/bruce-test-api-cli/commit/711e405248a783fc1d22c927126431db782b541b))
+* **internal:** codegen related update ([04d4062](https://github.com/bruce-hill/bruce-test-api-cli/commit/04d4062da125e85c2290408840f73ca9b7e92a3e))
+* **internal:** codegen related update ([4592687](https://github.com/bruce-hill/bruce-test-api-cli/commit/4592687c177cd2f6612c7354e709f60696501784))
+* **internal:** codegen related update ([056eea8](https://github.com/bruce-hill/bruce-test-api-cli/commit/056eea83468b16c14fbffb740dad9dbee16e304f))
+* **internal:** update `actions/checkout` version ([189b549](https://github.com/bruce-hill/bruce-test-api-cli/commit/189b5492c39b57dc9645a889ac18b8443b7f2760))
+* update Go SDK version ([419a690](https://github.com/bruce-hill/bruce-test-api-cli/commit/419a6908c547d407922e54b72cf2c83d2e31031f))
+* update internal comment ([8bbc480](https://github.com/bruce-hill/bruce-test-api-cli/commit/8bbc48051beff39fd97b309f12b535c268e73176))
+* updated README.md with more flag information ([f6ac119](https://github.com/bruce-hill/bruce-test-api-cli/commit/f6ac119e968390c5250ebe21ad9dd4798c2bde61))
+
 ## 0.4.0 (2026-01-08)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.3.0...v0.4.0)

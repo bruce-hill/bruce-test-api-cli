@@ -3,7 +3,7 @@ module github.com/bruce-hill/bruce-test-api-cli
 go 1.25
 
 require (
-	github.com/bruce-hill/bruce-test-api-go v0.22.0
+	github.com/bruce-hill/bruce-test-api-go v0.28.0
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.6
 	github.com/charmbracelet/lipgloss v1.1.0
@@ -17,7 +17,6 @@ require (
 	github.com/urfave/cli-docs/v3 v3.0.0-alpha6
 	github.com/urfave/cli/v3 v3.3.2
 	golang.org/x/sys v0.38.0
-	golang.org/x/term v0.37.0
 )
 
 require (

@@ -16,8 +16,9 @@ import (
 )
 
 var paginationList = cli.Command{
-	Name:  "list",
-	Usage: "Get foos",
+	Name:    "list",
+	Usage:   "Retrieves a paginated list of Foo objects with optional filtering by tags.\nSupports standard pagination parameters.",
+	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
 			Name:      "page",
@@ -33,6 +34,7 @@ var paginationList = cli.Command{
 		},
 		&requestflag.Flag[[]string]{
 			Name:      "tag",
+			Usage:     "Filter results by tags",
 			QueryPath: "tags",
 		},
 	},
