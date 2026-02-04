@@ -9,6 +9,13 @@ import (
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 )
 
+func TestDeleteTest(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"delete-test",
+	)
+}
+
 func TestFormTest(t *testing.T) {
 	t.Skip("prism issues because prism is not good at its job")
 	mocktest.TestRunMockTestWithFlags(
@@ -140,6 +147,14 @@ func TestJsonTest(t *testing.T) {
 	)
 }
 
+func TestNullableTest(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"nullable-test",
+		"--field", "null",
+	)
+}
+
 func TestUpdateCount(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
@@ -153,5 +168,19 @@ func TestUploadTest(t *testing.T) {
 		t,
 		"upload-test",
 		"--file", "",
+	)
+}
+
+func TestVersion(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"version",
+	)
+}
+
+func TestVoidTest(t *testing.T) {
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"void-test",
 	)
 }

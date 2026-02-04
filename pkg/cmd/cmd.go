@@ -68,10 +68,14 @@ func init() {
 			},
 		},
 		Commands: []*cli.Command{
+			&deleteTest,
 			&formTest,
 			&jsonTest,
+			&nullableTest,
 			&updateCount,
 			&uploadTest,
+			&version,
+			&voidTest,
 			{
 				Name:     "pagination",
 				Category: "API RESOURCE",
