@@ -5,10 +5,13 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
 
@@ -60,5 +63,19 @@ func handlePaginationList(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
-	return client.Pagination.List(ctx, params, options...)
+	format := cmd.Root().String("format")
+	transform := cmd.Root().String("transform")
+	if format == "raw" {
+		var res []byte
+		options = append(options, option.WithResponseBodyInto(&res))
+		_, err = client.Pagination.List(ctx, params, options...)
+		if err != nil {
+			return err
+		}
+		obj := gjson.ParseBytes(res)
+		return ShowJSON(os.Stdout, "pagination list", obj, format, transform)
+	} else {
+		iter := client.Pagination.ListAutoPaging(ctx, params, options...)
+		return ShowJSONIterator(os.Stdout, "pagination list", iter, format, transform)
+	}
 }
