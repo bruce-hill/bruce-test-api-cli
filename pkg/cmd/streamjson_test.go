@@ -9,7 +9,7 @@ import (
 )
 
 func TestStreamJsonStream(t *testing.T) {
-	t.Skip("Prism doesn't support application/x-ndjson responses")
+	t.Skip("Mock server doesn't support application/x-ndjson responses")
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"stream-json", "stream",
