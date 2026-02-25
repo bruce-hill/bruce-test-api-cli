@@ -11,8 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 ### Installing with Homebrew
 
 ```sh
-brew tap bruce-hill/tools
-brew install bruce-test-api
+brew install bruce-hill/tools/bruce-test-api
 ```
 
 ### Installing with Go
