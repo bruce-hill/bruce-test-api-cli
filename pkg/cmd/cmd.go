@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/autocomplete"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 )
@@ -65,6 +66,10 @@ func init() {
 			&cli.StringFlag{
 				Name:  "transform-error",
 				Usage: "The GJSON transformation for errors.",
+			},
+			&requestflag.Flag[string]{
+				Name:    "api-key",
+				Sources: cli.EnvVars("BRUCE_TEST_API_API_KEY"),
 			},
 		},
 		Commands: []*cli.Command{

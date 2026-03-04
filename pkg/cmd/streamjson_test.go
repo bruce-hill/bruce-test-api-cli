@@ -13,5 +13,6 @@ func TestStreamJsonStream(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"stream-json", "stream",
+		"--api-key", "string",
 	)
 }
