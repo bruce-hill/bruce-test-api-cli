@@ -13,6 +13,7 @@ func TestDeleteTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"delete-test",
+		"--api-key", "string",
 	)
 }
 
@@ -21,10 +22,11 @@ func TestFormTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"form-test",
+		"--api-key", "string",
 		"--version", "2",
 		"--user-id", "usr_abc123",
-		"--date", "2019-12-27",
-		"--datetime", "2019-12-27T18:11:19.117Z",
+		"--date", "'2019-12-27'",
+		"--datetime", "'2019-12-27T18:11:19.117Z'",
 		"--time", "18:11:19.117Z",
 		"--blorp", "example value",
 		"--filter", "{meta: {level: 0}, status: status}",
@@ -54,8 +56,8 @@ func TestFormTest(t *testing.T) {
 		"form-test",
 		"--version", "2",
 		"--user-id", "usr_abc123",
-		"--date", "2019-12-27",
-		"--datetime", "2019-12-27T18:11:19.117Z",
+		"--date", "'2019-12-27'",
+		"--datetime", "'2019-12-27T18:11:19.117Z'",
 		"--time", "18:11:19.117Z",
 		"--blorp", "example value",
 		"--filter.meta", "{level: 0}",
@@ -86,10 +88,11 @@ func TestJsonTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"json-test",
+		"--api-key", "string",
 		"--version", "3",
 		"--user-id", "usr_def456",
-		"--date", "2019-12-27",
-		"--datetime", "2019-12-27T18:11:19.117Z",
+		"--date", "'2019-12-27'",
+		"--datetime", "'2019-12-27T18:11:19.117Z'",
 		"--time", "18:11:19.117Z",
 		"--blorp", "test data",
 		"--filter", "{meta: {level: 0}, status: status}",
@@ -119,8 +122,8 @@ func TestJsonTest(t *testing.T) {
 		"json-test",
 		"--version", "3",
 		"--user-id", "usr_def456",
-		"--date", "2019-12-27",
-		"--datetime", "2019-12-27T18:11:19.117Z",
+		"--date", "'2019-12-27'",
+		"--datetime", "'2019-12-27T18:11:19.117Z'",
 		"--time", "18:11:19.117Z",
 		"--blorp", "test data",
 		"--filter.meta", "{level: 0}",
@@ -151,6 +154,7 @@ func TestNullableTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"nullable-test",
+		"--api-key", "string",
 		"--field", "null",
 	)
 }
@@ -159,6 +163,7 @@ func TestUpdateCount(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"update-count",
+		"--api-key", "string",
 		"--body", "42",
 	)
 }
@@ -167,7 +172,8 @@ func TestUploadTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"upload-test",
-		"--file", "",
+		"--api-key", "string",
+		"--file", "...",
 	)
 }
 
@@ -175,6 +181,7 @@ func TestVersion(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"version",
+		"--api-key", "string",
 	)
 }
 
@@ -182,5 +189,6 @@ func TestVoidTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"void-test",
+		"--api-key", "string",
 	)
 }

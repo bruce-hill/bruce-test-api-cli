@@ -55,13 +55,21 @@ bruce-test-api [resource] <command> [flags...]
 
 ```sh
 bruce-test-api update-count \
+  --api-key 'My API Key' \
   --body 123
 ```
 
 For details about specific commands, use the `--help` flag.
 
-### Global Flags
+### Environment variables
 
+| Environment variable     | Required | Default value |
+| ------------------------ | -------- | ------------- |
+| `BRUCE_TEST_API_API_KEY` | no       | `null`        |
+
+### Global flags
+
+- `--api-key` (can also be set with `BRUCE_TEST_API_API_KEY` env var)
 - `--help` - Show command line usage
 - `--debug` - Enable debug logging (includes HTTP request/response details)
 - `--version`, `-v` - Show the CLI version
