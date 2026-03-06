@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"bytes"
 	"compress/gzip"
 	"context"
 	"fmt"
@@ -11,20 +12,24 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/bruce-hill/bruce-test-api-cli/internal/autocomplete"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 )
 
 var (
-	Command *cli.Command
+	Command            *cli.Command
+	CommandErrorBuffer bytes.Buffer
 )
 
 func init() {
 	Command = &cli.Command{
-		Name:    "bruce-test-api",
-		Usage:   "CLI for the bruce-test-api API",
-		Suggest: true,
-		Version: Version,
+		Name:      "bruce-test-api",
+		Usage:     "CLI for the bruce-test-api API",
+		Suggest:   true,
+		Version:   Version,
+		ErrWriter: &CommandErrorBuffer,
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name:  "debug",
@@ -65,12 +70,21 @@ func init() {
 				Name:  "transform-error",
 				Usage: "The GJSON transformation for errors.",
 			},
+			&requestflag.Flag[string]{
+				Name:    "api-key",
+				Sources: cli.EnvVars("BRUCE_TEST_API_API_KEY"),
+			},
 		},
 		Commands: []*cli.Command{
+			&deleteTest,
+			&downloadTest,
 			&formTest,
 			&jsonTest,
+			&nullableTest,
 			&updateCount,
 			&uploadTest,
+			&version,
+			&voidTest,
 			{
 				Name:     "pagination",
 				Category: "API RESOURCE",
@@ -123,10 +137,20 @@ func init() {
 					},
 				},
 			},
+			{
+				Name:            "__complete",
+				Hidden:          true,
+				HideHelpCommand: true,
+				Action:          autocomplete.ExecuteShellCompletion,
+			},
+			{
+				Name:            "@completion",
+				Hidden:          true,
+				HideHelpCommand: true,
+				Action:          autocomplete.OutputCompletionScript,
+			},
 		},
-		EnableShellCompletion:      true,
-		ShellCompletionCommandName: "@completion",
-		HideHelpCommand:            true,
+		HideHelpCommand: true,
 	}
 }
 
