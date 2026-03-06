@@ -17,6 +17,16 @@ func TestDeleteTest(t *testing.T) {
 	)
 }
 
+func TestDownloadTest(t *testing.T) {
+	t.Skip("Mock server doesn't support application/octet-stream responses")
+	mocktest.TestRunMockTestWithFlags(
+		t,
+		"download-test",
+		"--api-key", "string",
+		"--output", "/dev/null",
+	)
+}
+
 func TestFormTest(t *testing.T) {
 	t.Skip("prism issues because prism is not good at its job")
 	mocktest.TestRunMockTestWithFlags(

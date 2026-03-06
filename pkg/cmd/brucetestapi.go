@@ -24,6 +24,21 @@ var deleteTest = cli.Command{
 	HideHelpCommand: true,
 }
 
+var downloadTest = cli.Command{
+	Name:    "download-test",
+	Usage:   "Download a file using application/octet-stream",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:    "output",
+			Aliases: []string{"o"},
+			Usage:   "The file where the response contents will be stored. Use the value '-' to force output to stdout.",
+		},
+	},
+	Action:          handleDownloadTest,
+	HideHelpCommand: true,
+}
+
 var formTest = requestflag.WithInnerFlags(cli.Command{
 	Name:    "form-test",
 	Usage:   "Demonstrates a form-data endpoint with various parameter types including path,\nquery, and header parameters. Accepts multipart form data for user updates.",
@@ -381,6 +396,36 @@ func handleDeleteTest(ctx context.Context, cmd *cli.Command) error {
 	}
 
 	return client.DeleteTest(ctx, options...)
+}
+
+func handleDownloadTest(ctx context.Context, cmd *cli.Command) error {
+	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatDots,
+		apiquery.ArrayQueryFormatRepeat,
+		EmptyBody,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	response, err := client.DownloadTest(ctx, options...)
+	if err != nil {
+		return err
+	}
+	message, err := writeBinaryResponse(response, cmd.String("output"))
+	if message != "" {
+		fmt.Println(message)
+	}
+	return err
 }
 
 func handleFormTest(ctx context.Context, cmd *cli.Command) error {

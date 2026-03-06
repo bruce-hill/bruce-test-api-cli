@@ -77,6 +77,7 @@ func init() {
 		},
 		Commands: []*cli.Command{
 			&deleteTest,
+			&downloadTest,
 			&formTest,
 			&jsonTest,
 			&nullableTest,
