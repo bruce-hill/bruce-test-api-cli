@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.6.0 (2026-03-06)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.5.0...v0.6.0)
+
+### ⚠ BREAKING CHANGES
+
+* test version bumping
+* add support for passing files as parameters
+
+### Features
+
+* add readme documentation for passing files as arguments ([3906583](https://github.com/bruce-hill/bruce-test-api-cli/commit/3906583bef3611f68ffa93f8613d93c6afd0e127))
+* add support for file downloads from binary response endpoints ([5fe0119](https://github.com/bruce-hill/bruce-test-api-cli/commit/5fe0119d19fdde72d03525dcd33b0b22890e5835))
+* add support for passing files as parameters ([c72e3b8](https://github.com/bruce-hill/bruce-test-api-cli/commit/c72e3b889fa896daae488406d2d7ee6d2cbc42c2))
+* **api:** manual updates ([9dc91e1](https://github.com/bruce-hill/bruce-test-api-cli/commit/9dc91e148cdda87fafaa9f69969fa16f4ffc345b))
+* **api:** manual updates ([0b56367](https://github.com/bruce-hill/bruce-test-api-cli/commit/0b56367eddf94f0176eec0bbe532087fc03eaa73))
+* **api:** manual updates ([2d17c7f](https://github.com/bruce-hill/bruce-test-api-cli/commit/2d17c7fa891e802d8597c9a2e23b9623e3f64a12))
+* **api:** manual updates ([4ff0f1d](https://github.com/bruce-hill/bruce-test-api-cli/commit/4ff0f1d6c0c44a52cb8b7181714cb408929b812b))
+* **client:** provide file completions when using file embed syntax ([0a041ec](https://github.com/bruce-hill/bruce-test-api-cli/commit/0a041ec0da9f5c030af584ed73ebd6b8bfe52493))
+* **cli:** improve shell completions for namespaced commands and flags ([c75c5e2](https://github.com/bruce-hill/bruce-test-api-cli/commit/c75c5e245599ffb36066909fc47ea0b06e4f1546))
+* improved documentation and flags for client options ([07ad160](https://github.com/bruce-hill/bruce-test-api-cli/commit/07ad16047d8346c3a1339157d5e47468f2672dbf))
+* improved support for passing files for `any`-typed arguments ([076f115](https://github.com/bruce-hill/bruce-test-api-cli/commit/076f1153591f6fc1b2ba35d47c8b0c58fbfc38d6))
+* test version bumping ([3b2acd6](https://github.com/bruce-hill/bruce-test-api-cli/commit/3b2acd6cdee5d9417cd7f246df00de146bfd9fff))
+
+
+### Bug Fixes
+
+* avoid printing usage errors twice ([7850189](https://github.com/bruce-hill/bruce-test-api-cli/commit/78501894d3373c8183ff7a52fcdb3fcc3992b99b))
+* fix for file uploads to octet stream and form encoding endpoints ([4a200b8](https://github.com/bruce-hill/bruce-test-api-cli/commit/4a200b82fea8ca00016df6f6876f695e77ec30f3))
+* fix for when terminal width is not available ([b8d9d61](https://github.com/bruce-hill/bruce-test-api-cli/commit/b8d9d613b5a0c2126e15efd7a93fed1e066870e8))
+* more gracefully handle empty stdin input ([ec9852d](https://github.com/bruce-hill/bruce-test-api-cli/commit/ec9852da81382d42c34240f5cd9d2f7c572a7d49))
+* pin formatting for headers to always use repeat/dot formats ([b2f8002](https://github.com/bruce-hill/bruce-test-api-cli/commit/b2f8002774260022dc19f0d635209254acb12c34))
+* preserve filename in content-disposition for file uploads ([ca51bb2](https://github.com/bruce-hill/bruce-test-api-cli/commit/ca51bb257ec0b9984ff056cb32c2b2d8c58134d5))
+* prevent tests from hanging on streaming/paginated endpoints ([5e88ef2](https://github.com/bruce-hill/bruce-test-api-cli/commit/5e88ef22c1f00768109fa8d338edd590ef77a896))
+* remove unused imports ([d3cb3f7](https://github.com/bruce-hill/bruce-test-api-cli/commit/d3cb3f754e8b64f21a4bc892bcf323e97e782cd1))
+* use RawJSON for iterated values instead of re-marshalling ([962b6c1](https://github.com/bruce-hill/bruce-test-api-cli/commit/962b6c1d05a9f99f9a25a004c4f5251092ba7224))
+
+
+### Chores
+
+* add build step to ci ([f5e2b4e](https://github.com/bruce-hill/bruce-test-api-cli/commit/f5e2b4e902d20795f60cdea8d55a0cd0f18056a1))
+* **internal:** codegen related update ([6fa526e](https://github.com/bruce-hill/bruce-test-api-cli/commit/6fa526e5571cb834a91a45de966dd25fe3d61874))
+* **internal:** codegen related update ([bf28c9f](https://github.com/bruce-hill/bruce-test-api-cli/commit/bf28c9f61ca0444240c6d1603edee25bb033c3ca))
+* **internal:** codegen related update ([d91bff7](https://github.com/bruce-hill/bruce-test-api-cli/commit/d91bff79360598980f253a8cc2ea28a052f29742))
+* **internal:** codegen related update ([07204f5](https://github.com/bruce-hill/bruce-test-api-cli/commit/07204f5ef9ba644cc0dde8667ed6ab81bfce7eda))
+* **internal:** codegen related update ([c509bbb](https://github.com/bruce-hill/bruce-test-api-cli/commit/c509bbb8e3218440ba099ef0c5af5b494a2215af))
+* **internal:** codegen related update ([f84e88d](https://github.com/bruce-hill/bruce-test-api-cli/commit/f84e88d8ee1b1fecdd9594ede592b2aa65ee6585))
+* **internal:** codegen related update ([953e53d](https://github.com/bruce-hill/bruce-test-api-cli/commit/953e53d14b1e1f2ccc384e08a6fd1ff2ea8323df))
+* update documentation in readme ([d2cf254](https://github.com/bruce-hill/bruce-test-api-cli/commit/d2cf2546f7d353f8c189ce08af470778ea3a3648))
+* update mock server docs ([98aa7b1](https://github.com/bruce-hill/bruce-test-api-cli/commit/98aa7b1e379fde939fb79e63be82e39f9e95356e))
+* update readme with better instructions for installing with homebrew ([7675fed](https://github.com/bruce-hill/bruce-test-api-cli/commit/7675fed3f705dc9db62ba433df0f8d526c454cf2))
+* zip READMEs as part of build artifact ([772d0e1](https://github.com/bruce-hill/bruce-test-api-cli/commit/772d0e1277dae110747dcd6dfb18a2431bab014d))
+
 ## 0.5.0 (2026-01-26)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.4.0...v0.5.0)
