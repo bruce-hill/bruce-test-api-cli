@@ -17,7 +17,7 @@ import (
 
 var deleteTest = cli.Command{
 	Name:            "delete-test",
-	Usage:           "Deletion test",
+	Usage:           "Deletion test using DELETE verb",
 	Suggest:         true,
 	Flags:           []cli.Flag{},
 	Action:          handleDeleteTest,
