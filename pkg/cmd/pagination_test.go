@@ -9,12 +9,13 @@ import (
 )
 
 func TestPaginationList(t *testing.T) {
-	mocktest.TestRunMockTestWithFlags(
-		t,
-		"pagination", "list",
-		"--api-key", "string",
-		"--page", "1",
-		"--size", "1",
-		"--tag", "string",
-	)
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t, "pagination", "list",
+			"--api-key", "string",
+			"--page", "1",
+			"--size", "1",
+			"--tag", "string",
+		)
+	})
 }
