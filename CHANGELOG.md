@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.7.0 (2026-03-07)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* add `--max-items` flag for paginated/streaming endpoints ([69f59b4](https://github.com/bruce-hill/bruce-test-api-cli/commit/69f59b4a4b7c21d00cc9242c5a9c14dcf51771cf))
+* support passing required body params through pipes ([129a8fb](https://github.com/bruce-hill/bruce-test-api-cli/commit/129a8fbd8c750be2e872a335b84ff19e4d171b30))
+
+
+### Bug Fixes
+
+* fix for encoding arrays with `any` type items ([8c06a50](https://github.com/bruce-hill/bruce-test-api-cli/commit/8c06a50226ac4c33fd5f63a728447b330b688110))
+
+
+### Chores
+
+* **internal:** codegen related update ([73f9d02](https://github.com/bruce-hill/bruce-test-api-cli/commit/73f9d02abc6cc00e448c7f57feb4669448a0f395))
+* **test:** do not count install time for mock server timeout ([96022ee](https://github.com/bruce-hill/bruce-test-api-cli/commit/96022eef3592c6200239c297634e14da5c473e6e))
+
 ## 0.6.0 (2026-03-06)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.5.0...v0.6.0)
