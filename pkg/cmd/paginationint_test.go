@@ -13,6 +13,7 @@ func TestPaginationIntsList(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
 			t, "pagination:ints", "list",
 			"--api-key", "string",
+			"--max-items", "10",
 			"--page", "1",
 			"--size", "1",
 		)

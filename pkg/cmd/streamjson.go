@@ -8,15 +8,21 @@ import (
 	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
+	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
 	"github.com/bruce-hill/bruce-test-api-go"
 	"github.com/urfave/cli/v3"
 )
 
 var streamJsonStream = cli.Command{
-	Name:            "stream",
-	Usage:           "Streams JSON objects as a chunked response using Newline Delimited JSON (NDJSON)\nformat. Each line contains a complete JSON object. Useful for real-time data\nfeeds or large dataset streaming.",
-	Suggest:         true,
-	Flags:           []cli.Flag{},
+	Name:    "stream",
+	Usage:   "Streams JSON objects as a chunked response using Newline Delimited JSON (NDJSON)\nformat. Each line contains a complete JSON object. Useful for real-time data\nfeeds or large dataset streaming.",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[int64]{
+			Name:  "max-items",
+			Usage: "The maximum number of items to return (use -1 for unlimited).",
+		},
+	},
 	Action:          handleStreamJsonStream,
 	HideHelpCommand: true,
 }
@@ -43,5 +49,9 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
 	stream := client.StreamJson.StreamStreaming(ctx, options...)
-	return ShowJSONIterator(os.Stdout, "stream-json stream", stream, format, transform)
+	maxItems := int64(-1)
+	if cmd.IsSet("max-items") {
+		maxItems = cmd.Value("max-items").(int64)
+	}
+	return ShowJSONIterator(os.Stdout, "stream-json stream", stream, format, transform, maxItems)
 }
