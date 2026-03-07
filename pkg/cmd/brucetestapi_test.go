@@ -64,6 +64,7 @@ func TestFormTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"form-test",
+		"--api-key", "string",
 		"--version", "2",
 		"--user-id", "usr_abc123",
 		"--date", "'2019-12-27'",
@@ -130,6 +131,7 @@ func TestJsonTest(t *testing.T) {
 	mocktest.TestRunMockTestWithFlags(
 		t,
 		"json-test",
+		"--api-key", "string",
 		"--version", "3",
 		"--user-id", "usr_def456",
 		"--date", "'2019-12-27'",
