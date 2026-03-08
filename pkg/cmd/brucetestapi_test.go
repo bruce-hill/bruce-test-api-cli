@@ -295,13 +295,13 @@ func TestUploadTest(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
 			t, "upload-test",
 			"--api-key", "string",
-			"--file", "...",
+			"--file", "Example data",
 		)
 	})
 
 	t.Run("piping data", func(t *testing.T) {
 		// Test piping YAML data over stdin
-		pipeData := []byte("{}")
+		pipeData := []byte("file: Example data")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData, "upload-test",
 			"--api-key", "string",
