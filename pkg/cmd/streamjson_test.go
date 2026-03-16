@@ -12,8 +12,9 @@ func TestStreamJsonStream(t *testing.T) {
 	t.Skip("Mock server doesn't support application/x-ndjson responses")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "stream-json", "stream",
+			t,
 			"--api-key", "string",
+			"stream-json", "stream",
 			"--max-items", "10",
 		)
 	})

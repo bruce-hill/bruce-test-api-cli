@@ -11,8 +11,9 @@ import (
 func TestPaginationList(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "pagination", "list",
+			t,
 			"--api-key", "string",
+			"pagination", "list",
 			"--max-items", "10",
 			"--page", "1",
 			"--size", "1",
