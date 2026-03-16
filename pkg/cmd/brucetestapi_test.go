@@ -12,8 +12,9 @@ import (
 func TestDeleteTest(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "delete-test",
+			t,
 			"--api-key", "string",
+			"delete-test",
 		)
 	})
 }
@@ -22,8 +23,9 @@ func TestDownloadTest(t *testing.T) {
 	t.Skip("Mock server doesn't support application/octet-stream responses")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "download-test",
+			t,
 			"--api-key", "string",
+			"download-test",
 			"--output", "/dev/null",
 		)
 	})
@@ -33,8 +35,9 @@ func TestFormTest(t *testing.T) {
 	t.Skip("prism issues because prism is not good at its job")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "form-test",
+			t,
 			"--api-key", "string",
+			"form-test",
 			"--version", "2",
 			"--user-id", "usr_abc123",
 			"--date", "'2019-12-27'",
@@ -66,8 +69,9 @@ func TestFormTest(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "form-test",
+			t,
 			"--api-key", "string",
+			"form-test",
 			"--version", "2",
 			"--user-id", "usr_abc123",
 			"--date", "'2019-12-27'",
@@ -123,8 +127,9 @@ func TestFormTest(t *testing.T) {
 			"  name: Albert\n" +
 			"  count: 5\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "form-test",
+			t, pipeData,
 			"--api-key", "string",
+			"form-test",
 			"--version", "2",
 			"--user-id", "usr_abc123",
 			"--date", "'2019-12-27'",
@@ -144,8 +149,9 @@ func TestFormTest(t *testing.T) {
 func TestJsonTest(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "json-test",
+			t,
 			"--api-key", "string",
+			"json-test",
 			"--version", "3",
 			"--user-id", "usr_def456",
 			"--date", "'2019-12-27'",
@@ -177,8 +183,9 @@ func TestJsonTest(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "json-test",
+			t,
 			"--api-key", "string",
+			"json-test",
 			"--version", "3",
 			"--user-id", "usr_def456",
 			"--date", "'2019-12-27'",
@@ -234,8 +241,9 @@ func TestJsonTest(t *testing.T) {
 			"  name: Albert\n" +
 			"  count: 5\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "json-test",
+			t, pipeData,
 			"--api-key", "string",
+			"json-test",
 			"--version", "3",
 			"--user-id", "usr_def456",
 			"--date", "'2019-12-27'",
@@ -255,8 +263,9 @@ func TestJsonTest(t *testing.T) {
 func TestNullableTest(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "nullable-test",
+			t,
 			"--api-key", "string",
+			"nullable-test",
 			"--field", "null",
 		)
 	})
@@ -265,8 +274,9 @@ func TestNullableTest(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("field: null")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "nullable-test",
+			t, pipeData,
 			"--api-key", "string",
+			"nullable-test",
 		)
 	})
 }
@@ -274,8 +284,9 @@ func TestNullableTest(t *testing.T) {
 func TestUpdateCount(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "update-count",
+			t,
 			"--api-key", "string",
+			"update-count",
 			"--body", "42",
 		)
 	})
@@ -284,8 +295,9 @@ func TestUpdateCount(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("42")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "update-count",
+			t, pipeData,
 			"--api-key", "string",
+			"update-count",
 		)
 	})
 }
@@ -293,8 +305,9 @@ func TestUpdateCount(t *testing.T) {
 func TestUploadTest(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "upload-test",
+			t,
 			"--api-key", "string",
+			"upload-test",
 			"--file", "Example data",
 		)
 	})
@@ -303,8 +316,9 @@ func TestUploadTest(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("file: Example data")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "upload-test",
+			t, pipeData,
 			"--api-key", "string",
+			"upload-test",
 		)
 	})
 }
@@ -312,8 +326,9 @@ func TestUploadTest(t *testing.T) {
 func TestVersion(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "version",
+			t,
 			"--api-key", "string",
+			"version",
 		)
 	})
 }
@@ -321,8 +336,9 @@ func TestVersion(t *testing.T) {
 func TestVoidTest(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "void-test",
+			t,
 			"--api-key", "string",
+			"void-test",
 		)
 	})
 }
