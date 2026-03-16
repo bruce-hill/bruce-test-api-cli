@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
+
+# Mark the necessary Go modules as private to avoid Go's proxy
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/bruce-hill/bruce-test-api-go/v2,github.com/stainless-sdks/bruce-test-api-go/v2"
 
 echo "==> Building bruce-test-api"
 go build ./cmd/bruce-test-api
