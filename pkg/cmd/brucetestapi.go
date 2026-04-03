@@ -348,10 +348,11 @@ var uploadTest = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "file",
-			Usage:    "The binary file to upload.",
-			Required: true,
-			BodyPath: "file",
+			Name:      "file",
+			Usage:     "The binary file to upload.",
+			Required:  true,
+			BodyPath:  "file",
+			FileInput: true,
 		},
 	},
 	Action:          handleUploadTest,
