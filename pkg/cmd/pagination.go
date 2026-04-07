@@ -9,8 +9,8 @@ import (
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
-	"github.com/bruce-hill/bruce-test-api-go"
-	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/bruce-hill/bruce-test-api-go/v2"
+	"github.com/bruce-hill/bruce-test-api-go/v2/option"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
@@ -36,6 +36,10 @@ var paginationList = cli.Command{
 			Name:      "tag",
 			Usage:     "Filter results by tags",
 			QueryPath: "tags",
+		},
+		&requestflag.Flag[int64]{
+			Name:  "max-items",
+			Usage: "The maximum number of items to return (use -1 for unlimited).",
 		},
 	},
 	Action:          handlePaginationList,
@@ -76,6 +80,10 @@ func handlePaginationList(ctx context.Context, cmd *cli.Command) error {
 		return ShowJSON(os.Stdout, "pagination list", obj, format, transform)
 	} else {
 		iter := client.Pagination.ListAutoPaging(ctx, params, options...)
-		return ShowJSONIterator(os.Stdout, "pagination list", iter, format, transform)
+		maxItems := int64(-1)
+		if cmd.IsSet("max-items") {
+			maxItems = cmd.Value("max-items").(int64)
+		}
+		return ShowJSONIterator(os.Stdout, "pagination list", iter, format, transform, maxItems)
 	}
 }

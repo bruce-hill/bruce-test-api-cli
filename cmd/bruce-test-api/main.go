@@ -11,7 +11,7 @@ import (
 	"slices"
 
 	"github.com/bruce-hill/bruce-test-api-cli/pkg/cmd"
-	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/v2"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
@@ -21,6 +21,13 @@ func main() {
 
 	if slices.Contains(os.Args, "__complete") {
 		prepareForAutocomplete(app)
+	}
+
+	if baseURL, ok := os.LookupEnv("BRUCE_TEST_API_BASE_URL"); ok {
+		if err := cmd.ValidateBaseURL(baseURL, "BRUCE_TEST_API_BASE_URL"); err != nil {
+			fmt.Fprintf(os.Stderr, "%s\n", err.Error())
+			os.Exit(1)
+		}
 	}
 
 	if err := app.Run(context.Background(), os.Args); err != nil {

@@ -9,8 +9,8 @@ import (
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
-	"github.com/bruce-hill/bruce-test-api-go"
-	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/bruce-hill/bruce-test-api-go/v2"
+	"github.com/bruce-hill/bruce-test-api-go/v2/option"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
@@ -348,10 +348,11 @@ var uploadTest = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "file",
-			Usage:    "The binary file to upload.",
-			Required: true,
-			BodyPath: "file",
+			Name:      "file",
+			Usage:     "The binary file to upload.",
+			Required:  true,
+			BodyPath:  "file",
+			FileInput: true,
 		},
 	},
 	Action:          handleUploadTest,
@@ -421,7 +422,7 @@ func handleDownloadTest(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
-	message, err := writeBinaryResponse(response, cmd.String("output"))
+	message, err := writeBinaryResponse(response, os.Stdout, cmd.String("output"))
 	if message != "" {
 		fmt.Println(message)
 	}

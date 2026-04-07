@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-if [[ -n "$1" ]]; then
-  LOCAL_GO="$1"
-  shift
-else
-  LOCAL_GO=../bruce-test-api-go
-fi
+# Mark the necessary Go modules as private to avoid Go's proxy
+export GOPRIVATE="${GOPRIVATE:+$GOPRIVATE,}github.com/bruce-hill/bruce-test-api-go/v2,github.com/stainless-sdks/bruce-test-api-go/v2"
 
-echo "==> Linking with local directory"
+REPLACEMENT="${1:-"../bruce-test-api-go"}"
+echo "==> Replacing Go SDK with $REPLACEMENT"
+go mod edit -replace github.com/bruce-hill/bruce-test-api-go/v2="$REPLACEMENT"
 go mod tidy -e
-go mod edit -replace github.com/bruce-hill/bruce-test-api-go="$LOCAL_GO"
