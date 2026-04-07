@@ -1,5 +1,66 @@
 # Changelog
 
+## 1.0.0 (2026-04-07)
+
+Full Changelog: [v0.6.0...v1.0.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.6.0...v1.0.0)
+
+### Features
+
+* add `--max-items` flag for paginated/streaming endpoints ([69f59b4](https://github.com/bruce-hill/bruce-test-api-cli/commit/69f59b4a4b7c21d00cc9242c5a9c14dcf51771cf))
+* allow `-` as value representing stdin to binary-only file parameters in CLIs ([53e492b](https://github.com/bruce-hill/bruce-test-api-cli/commit/53e492b511250def18e2bff48efdb49d79882ba2))
+* better error message if scheme forgotten in CLI `*_BASE_URL`/`--base-url` ([9e8ea2e](https://github.com/bruce-hill/bruce-test-api-cli/commit/9e8ea2eba4b37c35f6c697842d1adb8dc5ec61da))
+* binary-only parameters become CLI flags that take filenames only ([44f76ee](https://github.com/bruce-hill/bruce-test-api-cli/commit/44f76eee7a8ccdd4708895697411bab536c72b7b))
+* set CLI flag constant values automatically where `x-stainless-const` is set ([5a4c267](https://github.com/bruce-hill/bruce-test-api-cli/commit/5a4c267eb392ce8ac947756d8fcb92bea4563fad))
+* support passing required body params through pipes ([129a8fb](https://github.com/bruce-hill/bruce-test-api-cli/commit/129a8fbd8c750be2e872a335b84ff19e4d171b30))
+
+
+### Bug Fixes
+
+* add missing example parameters for test cases ([ff405fd](https://github.com/bruce-hill/bruce-test-api-cli/commit/ff405fdec7d745479a38a8a90ccc14890a7c3b09))
+* avoid reading from stdin unless request body is form encoded or json ([c02ddcf](https://github.com/bruce-hill/bruce-test-api-cli/commit/c02ddcf6155d4877a3b64f7a667c960277ec9bc2))
+* better support passing client args in any position ([d0e2b80](https://github.com/bruce-hill/bruce-test-api-cli/commit/d0e2b8030b018fdb586f6ee72d769263470fc380))
+* cli no longer hangs when stdin is attached to a pipe with empty input ([ea56026](https://github.com/bruce-hill/bruce-test-api-cli/commit/ea5602614c0fb3f047ca2a3404003c693d6ed621))
+* fall back to main branch if linking fails in CI ([c5a15bf](https://github.com/bruce-hill/bruce-test-api-cli/commit/c5a15bf4d2ee9178909e8587ed29cadc8d36d2e3))
+* fix for encoding arrays with `any` type items ([8c06a50](https://github.com/bruce-hill/bruce-test-api-cli/commit/8c06a50226ac4c33fd5f63a728447b330b688110))
+* fix for off-by-one error in pagination logic ([e2fd877](https://github.com/bruce-hill/bruce-test-api-cli/commit/e2fd87732c2231b3744ddf290e96f60fe659b996))
+* fix for test cases with newlines in YAML and better error reporting ([bf2bfbf](https://github.com/bruce-hill/bruce-test-api-cli/commit/bf2bfbf578906fdaedea493e44c9dbad970875c3))
+* fix quoting typo ([a07b95d](https://github.com/bruce-hill/bruce-test-api-cli/commit/a07b95d6a2353b2c110e4d6b9f271392932a2170))
+* handle empty data set using `--format explore` ([0ab4511](https://github.com/bruce-hill/bruce-test-api-cli/commit/0ab451121c5db3f8aafeb4a64817d85e028470c3))
+* improve linking behavior when developing on a branch not in the Go SDK ([017a6d8](https://github.com/bruce-hill/bruce-test-api-cli/commit/017a6d842a94b53faf2d319f1a5aa41b14b6d028))
+* improved workflow for developing on branches ([9a6d982](https://github.com/bruce-hill/bruce-test-api-cli/commit/9a6d9829a21c43c4333b9e18f31b67d717ba71aa))
+* no longer require an API key when building on production repos ([5386075](https://github.com/bruce-hill/bruce-test-api-cli/commit/5386075a7f54127e8d1cdc2c20da9a366dcdd741))
+* only set client options when the corresponding CLI flag or env var is explicitly set ([adff5a8](https://github.com/bruce-hill/bruce-test-api-cli/commit/adff5a81825bb22f8dc23d06ce5b9493bc8fe782))
+* use `RawJSON` when iterating items with `--format explore` in the CLI ([8f3df62](https://github.com/bruce-hill/bruce-test-api-cli/commit/8f3df62e8f435dd9d5b2b17b12e932c8c0bf3a00))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([19fe3c5](https://github.com/bruce-hill/bruce-test-api-cli/commit/19fe3c5edaf389de90b4bcb6804fec4950f0184d))
+* **ci:** skip uploading artifacts on stainless-internal branches ([38d0a82](https://github.com/bruce-hill/bruce-test-api-cli/commit/38d0a82830e32944c75c8457f62095611dce2cb2))
+* **internal:** codegen related update ([6b13b43](https://github.com/bruce-hill/bruce-test-api-cli/commit/6b13b43aff6f75a6fd36c27a75549e137466092c))
+* **internal:** codegen related update ([f96adf8](https://github.com/bruce-hill/bruce-test-api-cli/commit/f96adf8e6366cc2c714fa52ad98d871530250336))
+* **internal:** codegen related update ([037b016](https://github.com/bruce-hill/bruce-test-api-cli/commit/037b0164de6c47b8027d3942ad15676580bf127c))
+* **internal:** codegen related update ([73f9d02](https://github.com/bruce-hill/bruce-test-api-cli/commit/73f9d02abc6cc00e448c7f57feb4669448a0f395))
+* **internal:** tweak CI branches ([0c380ff](https://github.com/bruce-hill/bruce-test-api-cli/commit/0c380ff8d8acfbafa28a211c18f3e0a86aaf564c))
+* **internal:** update gitignore ([8b2c283](https://github.com/bruce-hill/bruce-test-api-cli/commit/8b2c283931f939ade60b00420db0b77b83a3d5f8))
+* **internal:** update multipart form array serialization ([c543b19](https://github.com/bruce-hill/bruce-test-api-cli/commit/c543b192cf30c25c33eef91caa9bba468aad7b99))
+* mark all CLI-related tests in Go with `t.Parallel()` ([dd96fa4](https://github.com/bruce-hill/bruce-test-api-cli/commit/dd96fa4e4547abf096d09c8345115f8dbdba527b))
+* modify CLI tests to inject stdout so mutating `os.Stdout` isn't necessary ([5a9eee0](https://github.com/bruce-hill/bruce-test-api-cli/commit/5a9eee0f321eacc0f6548bcf6288b4abf85a63a3))
+* omit full usage information when missing required CLI parameters ([9494221](https://github.com/bruce-hill/bruce-test-api-cli/commit/9494221e8e0dae4c9941e23bb133ba63637f025a))
+* switch some CLI Go tests from `os.Chdir` to `t.Chdir` ([c390865](https://github.com/bruce-hill/bruce-test-api-cli/commit/c39086586f0cb952c827699df3d7200bd0f4e3a4))
+* **test:** do not count install time for mock server timeout ([96022ee](https://github.com/bruce-hill/bruce-test-api-cli/commit/96022eef3592c6200239c297634e14da5c473e6e))
+* **tests:** bump steady to v0.19.4 ([f14d5d9](https://github.com/bruce-hill/bruce-test-api-cli/commit/f14d5d9ce1948ce44a9a7e5d561faa3d5a54ccb3))
+* **tests:** bump steady to v0.19.5 ([fdf2539](https://github.com/bruce-hill/bruce-test-api-cli/commit/fdf2539d1a7e89bde5f5670c57f359f097145dc1))
+* **tests:** bump steady to v0.19.6 ([78487cc](https://github.com/bruce-hill/bruce-test-api-cli/commit/78487cc6332febccf52aaad96d07de9ea125f485))
+* **tests:** bump steady to v0.19.7 ([e220b41](https://github.com/bruce-hill/bruce-test-api-cli/commit/e220b418a3013d6be1ef47fac6cee2b41eba0b20))
+* **tests:** bump steady to v0.20.1 ([0804c5a](https://github.com/bruce-hill/bruce-test-api-cli/commit/0804c5af0e2e30c391e933390f2ae34c47884e79))
+* **tests:** bump steady to v0.20.2 ([245a49b](https://github.com/bruce-hill/bruce-test-api-cli/commit/245a49b40f07b87cd7caac31e3ed4a0984528e07))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([40c8f95](https://github.com/bruce-hill/bruce-test-api-cli/commit/40c8f95b01954d0eaa079791178efeef31aa489b))
+
 ## 0.6.0 (2026-03-06)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.5.0...v0.6.0)
