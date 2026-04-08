@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 (2026-04-08)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** manual updates ([38c391d](https://github.com/bruce-hill/bruce-test-api-cli/commit/38c391d24c9481ba36111d768c12a98ca1abae71))
+* **api:** manual updates ([6e5b7b4](https://github.com/bruce-hill/bruce-test-api-cli/commit/6e5b7b4b420f74ead69e3de97866972d7ade7616))
+
 ## 1.0.0 (2026-04-07)
 
 Full Changelog: [v0.6.0...v1.0.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v0.6.0...v1.0.0)
