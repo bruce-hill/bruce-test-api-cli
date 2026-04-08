@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (2026-04-08)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/bruce-hill/bruce-test-api-cli/compare/v1.1.0...v1.1.1)
+
 ## 1.1.0 (2026-04-08)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v1.0.0...v1.1.0)
