@@ -13,8 +13,8 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var streamJsonStreamy = cli.Command{
-	Name:    "streamy",
+var streamJsonStream = cli.Command{
+	Name:    "stream",
 	Usage:   "Streams JSON objects as a chunked response using Newline Delimited JSON (NDJSON)\nformat. Each line contains a complete JSON object. Useful for real-time data\nfeeds or large dataset streaming.",
 	Suggest: true,
 	Flags: []cli.Flag{
@@ -23,11 +23,11 @@ var streamJsonStreamy = cli.Command{
 			Usage: "The maximum number of items to return (use -1 for unlimited).",
 		},
 	},
-	Action:          handleStreamJsonStreamy,
+	Action:          handleStreamJsonStream,
 	HideHelpCommand: true,
 }
 
-func handleStreamJsonStreamy(ctx context.Context, cmd *cli.Command) error {
+func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	client := brucetestapi.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
 
@@ -48,10 +48,10 @@ func handleStreamJsonStreamy(ctx context.Context, cmd *cli.Command) error {
 
 	format := cmd.Root().String("format")
 	transform := cmd.Root().String("transform")
-	stream := client.StreamJson.StreamyStreaming(ctx, options...)
+	stream := client.StreamJson.StreamStreaming(ctx, options...)
 	maxItems := int64(-1)
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, "stream-json streamy", stream, format, transform, maxItems)
+	return ShowJSONIterator(os.Stdout, "stream-json stream", stream, format, transform, maxItems)
 }
