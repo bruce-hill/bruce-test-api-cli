@@ -8,12 +8,12 @@ import (
 	"github.com/bruce-hill/bruce-test-api-cli/internal/mocktest"
 )
 
-func TestStreamJsonStreamy(t *testing.T) {
+func TestStreamJsonStream(t *testing.T) {
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
 			t,
 			"--api-key", "string",
-			"stream-json", "streamy",
+			"stream-json", "stream",
 			"--max-items", "10",
 		)
 	})
