@@ -94,3 +94,9 @@ homebrew_casks:
       fish: "completions/bruce-test-api.fish"
     manpages:
     - man/man1/bruce-test-api.1.gz
+    hooks:
+      post:
+        install: |
+          if OS.mac?
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/bruce-test-api"]
+          end
