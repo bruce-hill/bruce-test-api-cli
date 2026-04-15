@@ -47,11 +47,12 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	}
 
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
 	stream := client.StreamJson.StreamStreaming(ctx, options...)
 	maxItems := int64(-1)
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, "stream-json stream", stream, format, transform, maxItems)
+	return ShowJSONIterator(os.Stdout, os.Stderr, "stream-json stream", stream, format, explicitFormat, transform, maxItems)
 }

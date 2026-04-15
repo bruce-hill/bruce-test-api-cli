@@ -469,8 +469,9 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "form-test", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "form-test", obj, format, explicitFormat, transform)
 }
 
 func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
@@ -513,8 +514,9 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "json-test", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "json-test", obj, format, explicitFormat, transform)
 }
 
 func handleNullableTest(ctx context.Context, cmd *cli.Command) error {
@@ -571,8 +573,9 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "update-count", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "update-count", obj, format, explicitFormat, transform)
 }
 
 func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
@@ -605,8 +608,9 @@ func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "upload-test", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "upload-test", obj, format, explicitFormat, transform)
 }
 
 func handleVersion(ctx context.Context, cmd *cli.Command) error {
@@ -637,8 +641,9 @@ func handleVersion(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "version", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "version", obj, format, explicitFormat, transform)
 }
 
 func handleVoidTest(ctx context.Context, cmd *cli.Command) error {
