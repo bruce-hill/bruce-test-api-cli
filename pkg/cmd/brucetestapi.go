@@ -471,7 +471,12 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "form-test", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "form-test",
+		Transform:      transform,
+	})
 }
 
 func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
@@ -516,7 +521,12 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "json-test", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "json-test",
+		Transform:      transform,
+	})
 }
 
 func handleNullableTest(ctx context.Context, cmd *cli.Command) error {
@@ -575,7 +585,12 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "update-count", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "update-count",
+		Transform:      transform,
+	})
 }
 
 func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
@@ -610,7 +625,12 @@ func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "upload-test", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "upload-test",
+		Transform:      transform,
+	})
 }
 
 func handleVersion(ctx context.Context, cmd *cli.Command) error {
@@ -643,7 +663,12 @@ func handleVersion(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "version", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "version",
+		Transform:      transform,
+	})
 }
 
 func handleVoidTest(ctx context.Context, cmd *cli.Command) error {

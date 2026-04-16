@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
@@ -54,5 +53,10 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, os.Stderr, "stream-json stream", stream, format, explicitFormat, transform, maxItems)
+	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "stream-json stream",
+		Transform:      transform,
+	})
 }
