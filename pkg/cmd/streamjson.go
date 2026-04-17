@@ -56,6 +56,7 @@ func handleStreamJsonStream(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "stream-json stream",
 		Transform:      transform,
 	})
