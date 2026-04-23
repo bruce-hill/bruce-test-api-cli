@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.2.0 (2026-04-23)
+
+Full Changelog: [v1.1.1...v1.2.0](https://github.com/bruce-hill/bruce-test-api-cli/compare/v1.1.1...v1.2.0)
+
+### Features
+
+* **cli:** add `--raw-output`/`-r` option to print raw (non-JSON) strings ([efdc610](https://github.com/bruce-hill/bruce-test-api-cli/commit/efdc6100beec4b17f73655a1d46f6bcdd7e4296a))
+* **cli:** alias parameters in data with `x-stainless-cli-data-alias` ([693a359](https://github.com/bruce-hill/bruce-test-api-cli/commit/693a3598e63460c6b577db5e0725f6b97cff772b))
+* **cli:** send filename and content type when reading input from files ([1131bbf](https://github.com/bruce-hill/bruce-test-api-cli/commit/1131bbfe27ac2c2a49135ab1aca9ab9252597788))
+
+
+### Bug Fixes
+
+* fix for failing to drop invalid module replace in link script ([3d79c74](https://github.com/bruce-hill/bruce-test-api-cli/commit/3d79c74c3a14136fe0c2dbb2906c80046e5dde8b))
+
+
+### Chores
+
+* add documentation for ./scripts/link ([6bb4b0e](https://github.com/bruce-hill/bruce-test-api-cli/commit/6bb4b0e46c9cb1c63b408fa5c4cc9e476e58b9f7))
+* **ci:** support manually triggering release workflow ([365d5e2](https://github.com/bruce-hill/bruce-test-api-cli/commit/365d5e2de23b0fafff7a845bbdefa5571fb1b8aa))
+* **cli:** additional test cases for `ShowJSONIterator` ([8103377](https://github.com/bruce-hill/bruce-test-api-cli/commit/8103377eeb73d0c924ed40fc6f6a25321bc52a47))
+* **cli:** fall back to JSON when using default "explore" with non-TTY ([759ce10](https://github.com/bruce-hill/bruce-test-api-cli/commit/759ce1073ab786163b4b5748f991e308fb886bc6))
+* **cli:** let `--format raw` be used in conjunction with `--transform` ([7bb8575](https://github.com/bruce-hill/bruce-test-api-cli/commit/7bb8575bad6d24e957562bec6f93ede3aa23abb1))
+* **cli:** switch long lists of positional args over to param structs ([eb18f9a](https://github.com/bruce-hill/bruce-test-api-cli/commit/eb18f9ab9c1a76a9af637080241745353abfa3df))
+* **cli:** use `ShowJSONOpts` as argument to `formatJSON` instead of many positionals ([8881853](https://github.com/bruce-hill/bruce-test-api-cli/commit/88818538b54883523463db5fbb974c9dbf839786))
+* **internal:** more robust bootstrap script ([8134b96](https://github.com/bruce-hill/bruce-test-api-cli/commit/8134b9607ca6cbe6a2b871d9f70d63c7f40a59b5))
+* **tests:** bump steady to v0.22.1 ([db5cb08](https://github.com/bruce-hill/bruce-test-api-cli/commit/db5cb08214a46b18bc773ed301fe40cf53f5e259))
+
 ## 1.1.1 (2026-04-08)
 
 Full Changelog: [v1.1.0...v1.1.1](https://github.com/bruce-hill/bruce-test-api-cli/compare/v1.1.0...v1.1.1)
