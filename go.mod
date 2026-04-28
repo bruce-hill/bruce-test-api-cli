@@ -3,7 +3,7 @@ module github.com/bruce-hill/bruce-test-api-cli
 go 1.25
 
 require (
-	github.com/bruce-hill/bruce-test-api-go/v2 v2.3.1
+	github.com/bruce-hill/bruce-test-api-go/v2 v2.4.0
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.6
 	github.com/charmbracelet/lipgloss v1.1.0

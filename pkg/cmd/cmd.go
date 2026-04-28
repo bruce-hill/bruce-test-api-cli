@@ -118,6 +118,14 @@ func init() {
 				},
 			},
 			{
+				Name:     "doop",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&doopDownload,
+				},
+			},
+			{
 				Name:            "@manpages",
 				Usage:           "Generate documentation for 'man'",
 				UsageText:       "bruce-test-api @manpages [-o bruce-test-api.1] [--gzip]",
