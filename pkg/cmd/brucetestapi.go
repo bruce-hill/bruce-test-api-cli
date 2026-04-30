@@ -45,14 +45,16 @@ var formTest = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name:     "version",
-			Usage:    "The API version to use",
-			Required: true,
+			Name:      "version",
+			Usage:     "The API version to use",
+			Required:  true,
+			PathParam: "version",
 		},
 		&requestflag.Flag[string]{
-			Name:     "user-id",
-			Usage:    "User ID in the format usr_xxxxx",
-			Required: true,
+			Name:      "user-id",
+			Usage:     "User ID in the format usr_xxxxx",
+			Required:  true,
+			PathParam: "userId",
 		},
 		&requestflag.Flag[any]{
 			Name:      "date",
@@ -181,14 +183,16 @@ var jsonTest = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[int64]{
-			Name:     "version",
-			Usage:    "The API version to use",
-			Required: true,
+			Name:      "version",
+			Usage:     "The API version to use",
+			Required:  true,
+			PathParam: "version",
 		},
 		&requestflag.Flag[string]{
-			Name:     "user-id",
-			Usage:    "User ID in the format usr_xxxxx",
-			Required: true,
+			Name:      "user-id",
+			Usage:     "User ID in the format usr_xxxxx",
+			Required:  true,
+			PathParam: "userId",
 		},
 		&requestflag.Flag[any]{
 			Name:      "date",
@@ -440,10 +444,6 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := brucetestapi.FormTestParams{
-		Version: cmd.Value("version").(int64),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
@@ -453,6 +453,10 @@ func handleFormTest(ctx context.Context, cmd *cli.Command) error {
 	)
 	if err != nil {
 		return err
+	}
+
+	params := brucetestapi.FormTestParams{
+		Version: cmd.Value("version").(int64),
 	}
 
 	var res []byte
@@ -491,10 +495,6 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := brucetestapi.JsonTestParams{
-		Version: cmd.Value("version").(int64),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
@@ -504,6 +504,10 @@ func handleJsonTest(ctx context.Context, cmd *cli.Command) error {
 	)
 	if err != nil {
 		return err
+	}
+
+	params := brucetestapi.JsonTestParams{
+		Version: cmd.Value("version").(int64),
 	}
 
 	var res []byte
@@ -539,8 +543,6 @@ func handleNullableTest(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := brucetestapi.NullableTestParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
@@ -551,6 +553,8 @@ func handleNullableTest(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := brucetestapi.NullableTestParams{}
 
 	return client.NullableTest(ctx, params, options...)
 }
@@ -563,8 +567,6 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := brucetestapi.UpdateCountParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
@@ -575,6 +577,8 @@ func handleUpdateCount(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := brucetestapi.UpdateCountParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -604,8 +608,6 @@ func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := brucetestapi.UploadTestParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatDots,
@@ -616,6 +618,8 @@ func handleUploadTest(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := brucetestapi.UploadTestParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
