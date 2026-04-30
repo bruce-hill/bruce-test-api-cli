@@ -20,7 +20,7 @@ import (
 	"github.com/bruce-hill/bruce-test-api-cli/internal/apiquery"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/debugmiddleware"
 	"github.com/bruce-hill/bruce-test-api-cli/internal/requestflag"
-	"github.com/bruce-hill/bruce-test-api-go/option"
+	"github.com/bruce-hill/bruce-test-api-go/v2/option"
 
 	"github.com/goccy/go-yaml"
 	"github.com/urfave/cli/v3"

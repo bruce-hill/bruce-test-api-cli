@@ -11,7 +11,7 @@ import (
 	"slices"
 
 	"github.com/bruce-hill/bruce-test-api-cli/pkg/cmd"
-	"github.com/bruce-hill/bruce-test-api-go"
+	"github.com/bruce-hill/bruce-test-api-go/v2"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )
