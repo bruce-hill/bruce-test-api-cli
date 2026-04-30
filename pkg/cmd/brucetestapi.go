@@ -316,7 +316,7 @@ var nullableTest = cli.Command{
 	Usage:   "Test nullable values.",
 	Suggest: true,
 	Flags: []cli.Flag{
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*int64]{
 			Name:     "field",
 			Default:  nil,
 			BodyPath: "field",
