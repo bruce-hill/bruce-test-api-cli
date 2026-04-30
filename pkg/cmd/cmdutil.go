@@ -17,7 +17,7 @@ import (
 	"syscall"
 
 	"github.com/bruce-hill/bruce-test-api-cli/internal/jsonview"
-	"github.com/bruce-hill/bruce-test-api-go/v2/option"
+	"github.com/bruce-hill/bruce-test-api-go/option"
 
 	"github.com/charmbracelet/x/term"
 	"github.com/itchyny/json2yaml"
